@@ -16,6 +16,7 @@ import {
   COMPARISONS_DATA
 } from "./lib/lichSuDangData";
 import type { StudyMode } from "./lib/types";
+import { applyMotionPref, getMotionPref } from "./lib/motion";
 import {
   ExternalLink,
   ArrowLeft,
@@ -24,7 +25,8 @@ import {
   Layers,
   FileCheck2,
   GripVertical,
-  Timer
+  Timer,
+  Sparkles
 } from "lucide-react";
 
 // Mỗi cuốn trên kệ mở thẳng tới mục kiến thức riêng của nó.
@@ -50,6 +52,10 @@ const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] =
 export default function App() {
   const [activeReadingBook, setActiveBook] = useState<BookItem | null>(null);
   const [studyMode, setStudyMode] = useState<StudyMode>("read");
+  const [motionFull, setMotionFull] = useState(() => getMotionPref() === "full");
+  useEffect(() => {
+    applyMotionPref(motionFull ? "full" : "auto");
+  }, [motionFull]);
   const [openingCover, setOpeningCover] = useState<BookItem | null>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const [focusSection, setFocusSection] = useState<string | null>(null);
@@ -238,6 +244,18 @@ export default function App() {
               </div>
             )}
           </div>
+
+          <AppButton
+            variant={motionFull ? "primary" : "outline"}
+            size="xs"
+            className="hidden sm:inline-flex"
+            aria-pressed={motionFull}
+            title="Bật hiệu ứng chuyển động, kể cả khi hệ điều hành đang tắt animation"
+            onClick={() => setMotionFull((v) => !v)}
+            icon={<Sparkles className="size-3" strokeWidth={1.5} />}
+          >
+            HIỆU ỨNG
+          </AppButton>
 
           <AppLink
             href="/LỊCH SỬ ĐẢNG 221TR - 2026.pdf"

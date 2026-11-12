@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePersistentState } from "../lib/usePersistentState";
+import { prefersReducedMotion } from "../lib/motion";
 import type { Chapter } from "../lib/types";
 import { RotateCcw, CheckCircle2, XCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { AppButton } from "./ui/app-button";
@@ -40,7 +41,7 @@ export default function QuizView({ chapters }: QuizViewProps) {
   const [shownPct, setShownPct] = useState(0);
   useEffect(() => {
     if (!isSubmitted) { setShownPct(0); return; }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setShownPct(pct); return; }
+    if (prefersReducedMotion()) { setShownPct(pct); return; }
     const start = performance.now();
     let raf = requestAnimationFrame(function tick(now) {
       const t = Math.min(1, (now - start) / 900);

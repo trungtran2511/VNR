@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePersistentState } from "../lib/usePersistentState";
+import { prefersReducedMotion } from "../lib/motion";
 import type { Chapter } from "../lib/types";
 import { BookOpen, CheckCircle, HelpCircle, Calendar, Bookmark, Check, ExternalLink } from "lucide-react";
 import { AppButton } from "./ui/app-button";
@@ -16,7 +17,7 @@ export default function ChapterView({ chapter, focusSectionId }: ChapterViewProp
     setReadSections((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (prefersReducedMotion()) return;
     const els = document.querySelectorAll<HTMLElement>(".reader-section");
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),

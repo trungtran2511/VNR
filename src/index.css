@@ -463,5 +463,20 @@
 .score-ring { width: 68px; height: 68px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--border) 0); position: relative; }
 .score-ring::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--accent); }
 .score-ring span { position: relative; font-size: 14px; font-weight: 600; color: var(--primary); }
-@media (prefers-reduced-motion: reduce) { .view-enter, .tl-enter { animation: none; } .reveal { opacity: 1; transform: none; transition: none; } .book-open-cover { animation: cover-fade 500ms ease-out forwards; } }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .view-enter, :root:not([data-motion="full"]) .tl-enter { animation: none; } :root:not([data-motion="full"]) .reveal { opacity: 1; transform: none; transition: none; } :root:not([data-motion="full"]) .book-open-cover { animation: cover-fade 500ms ease-out forwards; } }
 @keyframes cover-fade { 0%, 40% { opacity: 1; } 100% { opacity: 0; } }
+
+/* Hiệu ứng tinh tế bổ sung */
+.reveal .reader-section-title { position: relative; }
+.reader-section > div:first-child { position: relative; }
+.reader-section > div:first-child::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1.5px; width: 100%; background: var(--primary); transform: scaleX(0); transform-origin: left; }
+.reveal.in > div:first-child::after { transform: scaleX(.18); transition: transform 600ms cubic-bezier(.2,.7,.2,1) 150ms; }
+.reveal.in li { animation: view-enter 260ms ease-out backwards; }
+.reveal.in li:nth-child(2) { animation-delay: 70ms; }
+.reveal.in li:nth-child(3) { animation-delay: 140ms; }
+.reveal.in li:nth-child(4) { animation-delay: 210ms; }
+button:not(:disabled):active { transform: scale(.985); }
+.chapter-guide a { transition: transform 150ms ease-out, color 150ms ease-out; }
+.chapter-guide a:hover { transform: translateX(3px); }
+.tl-dot:hover::before { transform: scale(1.2); }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .reveal.in li { animation: none; } :root:not([data-motion="full"]) .reveal.in > div:first-child::after { transition: none; } }
