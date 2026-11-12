@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePersistentState } from "../lib/usePersistentState";
 import type { Chapter } from "../lib/types";
-import { BookOpen, CheckCircle, HelpCircle, Calendar, Bookmark } from "lucide-react";
+import { BookOpen, CheckCircle, HelpCircle, Calendar, Bookmark, Check, ExternalLink } from "lucide-react";
 import { AppButton } from "./ui/app-button";
 
 interface ChapterViewProps {
   chapter: Chapter;
+  focusSectionId?: string | null;
 }
 
-export default function ChapterView({ chapter }: ChapterViewProps) {
+export default function ChapterView({ chapter, focusSectionId }: ChapterViewProps) {
+  const [readSections, setReadSections] = usePersistentState<string[]>("vnr-read-sections", []);
+  const readCount = chapter.sections.filter((s) => readSections.includes(s.id)).length;
+  const toggleRead = (id: string) =>
+    setReadSections((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+
+  useEffect(() => {
+    if (!focusSectionId) return;
+    const t = window.setTimeout(
+      () => document.getElementById(`section-${focusSectionId}`)?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      120
+    );
+    return () => window.clearTimeout(t);
+  }, [focusSectionId, chapter.id]);
+
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
   const [showResults, setShowResults] = useState<Record<string, boolean>>({});
   const wordCount = chapter.sections.reduce(
@@ -51,6 +67,7 @@ export default function ChapterView({ chapter }: ChapterViewProps) {
           <span>Khoảng {readingMinutes} phút đọc tóm lược</span>
           <span>{chapter.sections.length} mục kiến thức</span>
           <span>{chapter.reviewQuestions.length} câu tự kiểm tra</span>
+          <span className="text-primary">Đã đọc {readCount}/{chapter.sections.length} mục</span>
         </div>
 
         <div className="pt-4 border-t border-border text-[15px] font-body text-foreground leading-[1.8]">
@@ -82,7 +99,11 @@ export default function ChapterView({ chapter }: ChapterViewProps) {
       {/* Chapter Sections */}
       <div className="space-y-12">
         {chapter.sections.map((sec, sIdx) => (
-          <article key={sec.id} id={`section-${sec.id}`} className="reader-section space-y-6">
+          <article
+            key={sec.id}
+            id={`section-${sec.id}`}
+            className={`reader-section space-y-6 scroll-mt-6 ${focusSectionId === sec.id ? "section-focus" : ""}`}
+          >
             <div className="border-b border-border pb-3 flex items-baseline justify-between gap-4">
               <h2 className="reader-section-title text-primary flex items-center gap-2.5">
                 <BookOpen className="size-4 text-primary flex-shrink-0" strokeWidth={1.5} />
@@ -147,6 +168,26 @@ export default function ChapterView({ chapter }: ChapterViewProps) {
                 </div>
               </div>
             )}
+
+            <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
+              <a
+                href="/LỊCH SỬ ĐẢNG 221TR - 2026.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 !border-0 hover:text-primary"
+              >
+                <ExternalLink className="size-3" strokeWidth={1.5} />
+                Nguồn: Giáo trình Lịch sử Đảng Cộng sản Việt Nam (PDF gốc)
+              </a>
+              <AppButton
+                size="xs"
+                variant={readSections.includes(sec.id) ? "primary" : "outline"}
+                onClick={() => toggleRead(sec.id)}
+                icon={<Check className="size-3" strokeWidth={1.5} />}
+              >
+                {readSections.includes(sec.id) ? "ĐÃ ĐỌC" : "ĐÁNH DẤU ĐÃ ĐỌC"}
+              </AppButton>
+            </footer>
           </article>
         ))}
       </div>

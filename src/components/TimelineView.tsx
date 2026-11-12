@@ -1,16 +1,18 @@
 import { useMemo, useState } from "react";
 import type { Milestone } from "../lib/types";
 import { sortMilestonesChronologically } from "../lib/timelineGame";
-import { Clock } from "lucide-react";
+import { Clock, ArrowUpRight } from "lucide-react";
 import { SegmentedControl } from "./ui/segmented-control";
 
 interface TimelineViewProps {
   milestones: Milestone[];
+  onOpenChapter?: (chapterCode: string) => void;
 }
 
 const CHAPTER_FILTERS = ["ALL", "Chương 1", "Chương 2", "Chương 3"];
 
-export default function TimelineView({ milestones }: TimelineViewProps) {
+export default function TimelineView({ milestones, onOpenChapter }: TimelineViewProps) {
+  const [activeId, setActiveId] = useState<string | null>(null);
   const [filterChapter, setFilterChapter] = useState<string>("ALL");
 
   const sorted = useMemo(() => sortMilestonesChronologically(milestones), [milestones]);
@@ -54,12 +56,31 @@ export default function TimelineView({ milestones }: TimelineViewProps) {
         />
       </header>
 
+      {/* Trục thời gian: bấm một mốc để nhảy tới nội dung */}
+      <div className="tl-track" role="list" aria-label="Trục thời gian các mốc sử">
+        {filtered.map((item) => (
+          <button
+            key={item.id}
+            role="listitem"
+            className="tl-dot"
+            aria-current={activeId === item.id}
+            onClick={() => {
+              setActiveId(item.id);
+              document.getElementById(`ms-${item.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }}
+          >
+            <span className="lbl">{item.year}</span>
+          </button>
+        ))}
+      </div>
+
       {/* Flat Catalogue Timeline Table */}
       <div className="border-t border-foreground/80 divide-y divide-border">
         {filtered.map((item) => (
           <article
             key={item.id}
-            className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-muted/40 transition-colors px-2"
+            id={`ms-${item.id}`}
+            className={`py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-muted/40 transition-colors px-2 ${activeId === item.id ? "bg-muted/60" : ""}`}
           >
             <div className="md:col-span-3 space-y-1.5">
               <div className="flex items-center gap-2 text-primary">
@@ -86,6 +107,15 @@ export default function TimelineView({ milestones }: TimelineViewProps) {
                 <span className="lbl text-primary mr-2">Ý NGHĨA LỊCH SỬ:</span>
                 <span>{item.significance}</span>
               </div>
+              {onOpenChapter && (
+                <button
+                  onClick={() => onOpenChapter(item.chapterCode)}
+                  className="inline-flex items-center gap-1 pt-1 text-xs text-primary hover:underline"
+                >
+                  Đọc {item.chapterCode}
+                  <ArrowUpRight className="size-3" strokeWidth={1.5} />
+                </button>
+              )}
             </div>
           </article>
         ))}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePersistentState } from "../lib/usePersistentState";
 import type { Chapter } from "../lib/types";
 import { RotateCcw, CheckCircle2, XCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { AppButton } from "./ui/app-button";
@@ -16,6 +17,7 @@ export default function QuizView({ chapters }: QuizViewProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [best, setBest] = usePersistentState<number>("vnr-quiz-best-pct", 0);
   const currentQ = allQuestions[currentIdx];
   const total = allQuestions.length;
 
@@ -33,6 +35,11 @@ export default function QuizView({ chapters }: QuizViewProps) {
   const score = Object.entries(selectedAnswers).reduce((acc, [qIdx, ans]) => {
     return acc + (allQuestions[Number(qIdx)].correctIndex === ans ? 1 : 0);
   }, 0);
+
+  const pct = Math.round((score / total) * 100);
+  useEffect(() => {
+    if (isSubmitted) setBest((b) => Math.max(b, pct));
+  }, [isSubmitted, pct, setBest]);
 
   return (
     <div className="space-y-10 max-w-3xl mx-auto pb-16">
@@ -216,7 +223,7 @@ export default function QuizView({ chapters }: QuizViewProps) {
             <div className="lbl text-primary">KẾT QUẢ TỔNG KẾT</div>
             <div className="font-body text-lg text-foreground">
               Đạt <strong>{score}</strong> / {total} câu đúng (
-              {Math.round((score / total) * 100)}%)
+              {Math.round((score / total) * 100)}%) · Cao nhất: {best}%
             </div>
           </div>
           <button

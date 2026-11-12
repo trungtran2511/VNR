@@ -429,3 +429,17 @@
 .tape-edge { position: absolute; width: var(--ws); height: var(--d); left: calc(var(--ws) / -2); top: calc(var(--d) / -2); backface-visibility: hidden; background-image: repeating-linear-gradient(90deg, #0002 0px, #0002 1px, transparent 1px, transparent 3px); }
 .tape-top { transform: rotateX(90deg) translateZ(calc(var(--H) / 2)); }
 .tape-bottom { transform: rotateX(-90deg) translateZ(calc(var(--H) / 2)); }
+
+/* Chữ cái đầu chương phóng to — giống trang sách in */
+.reader-content p:first-child::first-letter { font-family: var(--font-display, serif); font-size: 3.6em; font-weight: 600; line-height: .85; float: left; padding: .06em .12em 0 0; color: var(--primary); }
+/* Mục được mở từ cuốn sách trên kệ: vạch nhấn mờ dần */
+.section-focus { animation: section-focus 2.4s ease-out 1; border-left: 2px solid var(--primary); padding-left: 1rem; }
+@keyframes section-focus { from { background: color-mix(in srgb, var(--primary) 10%, transparent); } to { background: transparent; } }
+@media (prefers-reduced-motion: reduce) { .section-focus { animation: none; } }
+/* Dòng thời gian tương tác */
+.tl-track { display: flex; gap: 0; overflow-x: auto; padding: 1.5rem 0 1rem; position: relative; scrollbar-width: thin; }
+.tl-track::before { content: ""; position: absolute; left: 0; right: 0; top: 2.1rem; height: 1px; background: var(--border); }
+.tl-dot { flex: 0 0 auto; min-width: 5.5rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; background: none; border: 0; cursor: pointer; color: var(--muted-foreground); font-size: 12px; position: relative; transition: color 150ms ease-out; }
+.tl-dot::before { content: ""; width: 11px; height: 11px; border-radius: 50%; background: var(--background); border: 1.5px solid var(--border); z-index: 1; transition: all 150ms ease-out; }
+.tl-dot:hover, .tl-dot[aria-current="true"] { color: var(--primary); }
+.tl-dot[aria-current="true"]::before { background: var(--primary); border-color: var(--primary); transform: scale(1.35); }

@@ -27,6 +27,19 @@ import {
   Timer
 } from "lucide-react";
 
+// Mỗi cuốn trên kệ mở thẳng tới mục kiến thức riêng của nó.
+const BOOK_FOCUS: Record<string, string> = {
+  intro: "intro-1",
+  "ch1-founding": "ch1-1",
+  "ch1-democracy": "ch1-3",
+  "ch1-vietminh": "ch1-4",
+  ch1: "ch1-5",
+  ch2: "ch2-1",
+  "ch2-tworegions": "ch2-2",
+  "ch2-1975": "ch2-3",
+  ch3: "ch3-2"
+};
+
 const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] = [
   { mode: "read", label: "ĐỌC TÓM LƯỢC", icon: BookOpen },
   { mode: "flashcards", label: "FLASHCARDS", icon: Layers },
@@ -37,8 +50,10 @@ const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] =
 export default function App() {
   const [activeReadingBook, setActiveBook] = useState<BookItem | null>(null);
   const [studyMode, setStudyMode] = useState<StudyMode>("read");
-  const setActiveReadingBook = (book: BookItem | null) => {
+  const [focusSection, setFocusSection] = useState<string | null>(null);
+  const setActiveReadingBook = (book: BookItem | null, focus: string | null = null) => {
     setStudyMode("read");
+    setFocusSection(focus);
     setActiveBook(book);
   };
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -60,6 +75,7 @@ export default function App() {
             )
             .map((sec) => ({
               chapterId: ch.id,
+              sectionId: sec.id,
               chapterCode: ch.code,
               sectionTitle: sec.title,
               snippet: sec.content[0] || ""
@@ -84,7 +100,7 @@ export default function App() {
 
   // When on the 3D Curved VHS Archive hero, render full-screen without extra chrome
   if (!activeReadingBook) {
-    return <BookShelf3D onOpenBook={(book) => setActiveReadingBook(book)} />;
+    return <BookShelf3D onOpenBook={(book) => setActiveReadingBook(book, BOOK_FOCUS[book.id] ?? null)} />;
   }
 
   return (
@@ -179,7 +195,7 @@ export default function App() {
                             b.category === "chapter" &&
                             b.chapterId === res.chapterId
                         ) || BOOKS_COLLECTION[0];
-                      setActiveReadingBook(matched);
+                      setActiveReadingBook(matched, res.sectionId);
                       setSearchQuery("");
                     }}
                     className="w-full text-left p-3 hover:bg-muted transition-colors space-y-1"
@@ -266,11 +282,18 @@ export default function App() {
         {studyMode === "mockExam" && <MockExamView chapters={CHAPTERS_DATA} />}
 
         {studyMode === "read" && activeReadingBook.category === "chapter" && (
-          <ChapterView chapter={currentChapter} />
+          <ChapterView chapter={currentChapter} focusSectionId={focusSection} />
         )}
 
         {studyMode === "read" && activeReadingBook.category === "timeline" && (
-          <TimelineView milestones={MILESTONES_DATA} />
+          <TimelineView
+            milestones={MILESTONES_DATA}
+            onOpenChapter={(code) => {
+              const id = { "Chương 1": "ch1", "Chương 2": "ch2", "Chương 3": "ch3" }[code];
+              const book = BOOKS_COLLECTION.find((b) => b.category === "chapter" && b.chapterId === id);
+              if (book) setActiveReadingBook(book);
+            }}
+          />
         )}
 
         {studyMode === "read" && activeReadingBook.category === "compare" && (

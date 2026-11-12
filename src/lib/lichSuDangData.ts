@@ -73,6 +73,18 @@ export const CHAPTERS_DATA: Chapter[] = [
         ],
         correctIndex: 0,
         explanation: "Sự kết hợp giữa phương pháp lịch sử (tái hiện sự kiện chân thực) và phương pháp logic (tìm ra quy luật bản chất) là đặc trưng của môn học."
+      },
+      {
+        id: "q-intro-3",
+        question: "Ba chức năng của môn Lịch sử Đảng là gì?",
+        options: [
+          "Nhận thức, giáo dục, dự báo và phê phán",
+          "Kinh tế, chính trị, văn hóa",
+          "Lập pháp, hành pháp, tư pháp",
+          "Tuyên truyền, tổ chức, kiểm tra"
+        ],
+        correctIndex: 0,
+        explanation: "Môn học có ba chức năng: nhận thức, giáo dục, dự báo và phê phán."
       }
     ]
   },
@@ -111,16 +123,49 @@ export const CHAPTERS_DATA: Chapter[] = [
       },
       {
         id: "ch1-2",
-        title: "II. Các cao trào cách mạng và Tổng khởi nghĩa Tháng Tám (1930 - 1945)",
+        title: "II. Cao trào cách mạng 1930 - 1931 và Xô viết Nghệ - Tĩnh",
         content: [
-          "Cao trào cách mạng 1930 - 1931 với đỉnh cao Xô viết Nghệ - Tĩnh: Cuộc tổng diễn tập đầu tiên khẳng định quyền lãnh đạo và liên minh công nông.",
-          "Cuộc vận động dân chủ 1936 - 1939: Cuộc diễn tập thứ hai, sử dụng hình thức đấu tranh công khai, bán công khai, xây dựng mặt trận dân chủ rộng rãi.",
-          "Cao trào kháng Nhật cứu nước (1939 - 1945): Đặt nhiệm vụ giải phóng dân tộc lên hàng trước tiên và tối cao, thành lập Mặt trận Việt Minh (1941), phát động khởi nghĩa từng phần.",
+          "Cao trào cách mạng 1930 - 1931 với đỉnh cao Xô viết Nghệ - Tĩnh: Cuộc tổng diễn tập đầu tiên khẳng định quyền lãnh đạo và liên minh công nông."
+        ],
+        keyPoints: [
+          "Lần đầu tiên công nhân và nông dân dưới sự lãnh đạo của Đảng giành chính quyền ở cơ sở, xây dựng chính quyền kiểu Xô viết."
+        ]
+      },
+      {
+        id: "ch1-3",
+        title: "III. Cuộc vận động dân chủ 1936 - 1939",
+        content: [
+          "Cuộc vận động dân chủ 1936 - 1939: Cuộc diễn tập thứ hai, sử dụng hình thức đấu tranh công khai, bán công khai, xây dựng mặt trận dân chủ rộng rãi."
+        ],
+        keyPoints: [
+          "Đảng kết hợp đấu tranh hợp pháp với bí mật, mở rộng ảnh hưởng chính trị và tập hợp quần chúng."
+        ]
+      },
+      {
+        id: "ch1-4",
+        title: "IV. Chuyển hướng chiến lược, Mặt trận Việt Minh (1939 - 1945)",
+        content: [
+          "Cao trào kháng Nhật cứu nước (1939 - 1945): Đặt nhiệm vụ giải phóng dân tộc lên hàng trước tiên và tối cao, thành lập Mặt trận Việt Minh (1941), phát động khởi nghĩa từng phần."
+        ],
+        keyPoints: [
+          "Chuyển hướng chỉ đạo chiến lược tại các Hội nghị Trung ương 6 (1939), 7 (1940) và Hội nghị Trung ương 8 (5/1941)."
+        ]
+      },
+      {
+        id: "ch1-5",
+        title: "V. Cách mạng Tháng Tám 1945 và Tuyên ngôn Độc lập",
+        content: [
           "Cách mạng Tháng Tám năm 1945: Tận dụng thời cơ ngàn năm có một khi Nhật đầu hàng Đồng minh, toàn dân tộc vùng dậy giành chính quyền trong cả nước từ ngày 14/8 đến 28/8/1945. Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa."
         ],
         keyPoints: [
-          "Chuyển hướng chỉ đạo chiến lược tại các Hội nghị Trung ương 6 (1939), 7 (1940) và Hội nghị Trung ương 8 (5/1941).",
           "Nghệ thuật chớp thời cơ và kết hợp khởi nghĩa nông thôn với thành thị chớp nhoáng, thắng lợi trọn vẹn."
+        ],
+        historicalEvents: [
+          {
+            date: "02/09/1945",
+            event: "Tuyên ngôn Độc lập tại Quảng trường Ba Đình",
+            significance: "Khai sinh nước Việt Nam Dân chủ Cộng hòa."
+          }
         ]
       }
     ],
@@ -148,6 +193,54 @@ export const CHAPTERS_DATA: Chapter[] = [
         ],
         correctIndex: 0,
         explanation: "Hội nghị Trung ương 8 do Nguyễn Ái Quốc chủ trì tại Pác Bó (Cao Bằng) tháng 5/1941 đã hoàn chỉnh đường lối giương cao ngọn cờ giải phóng dân tộc và thành lập Mặt trận Việt Minh."
+      },
+      {
+        id: "q-ch1-3",
+        question: "Hội nghị thành lập Đảng (đầu năm 1930) thông qua văn kiện nào do Nguyễn Ái Quốc soạn thảo?",
+        options: [
+          "Chánh cương vắn tắt và Sách lược vắn tắt",
+          "Luận cương chính trị",
+          "Tuyên ngôn Độc lập",
+          "Chương trình Việt Minh"
+        ],
+        correctIndex: 0,
+        explanation: "Chánh cương vắn tắt, Sách lược vắn tắt là Cương lĩnh chính trị đầu tiên của Đảng. Luận cương chính trị do Trần Phú khởi thảo, thông qua tháng 10/1930."
+      },
+      {
+        id: "q-ch1-4",
+        question: "Cuộc vận động dân chủ 1936 - 1939 được xem là gì trong tiến trình giành chính quyền?",
+        options: [
+          "Cuộc diễn tập thứ hai",
+          "Cuộc tổng diễn tập đầu tiên",
+          "Cuộc tổng khởi nghĩa",
+          "Cuộc kháng chiến toàn quốc"
+        ],
+        correctIndex: 0,
+        explanation: "Cao trào 1930 - 1931 là cuộc tổng diễn tập đầu tiên; cuộc vận động dân chủ 1936 - 1939 là cuộc diễn tập thứ hai, chuẩn bị cho Cách mạng Tháng Tám."
+      },
+      {
+        id: "q-ch1-5",
+        question: "Cách mạng Tháng Tám 1945 giành chính quyền trong cả nước trong khoảng thời gian nào?",
+        options: [
+          "Từ 14/8 đến 28/8/1945",
+          "Từ 6/1 đến 7/2/1930",
+          "Từ 19/12/1946 đến 1947",
+          "Từ 6/3 đến 14/9/1946"
+        ],
+        correctIndex: 0,
+        explanation: "Tổng khởi nghĩa diễn ra từ 14/8 đến 28/8/1945; ngày 2/9/1945 Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập."
+      },
+      {
+        id: "q-ch1-6",
+        question: "Xô viết Nghệ - Tĩnh nằm trong cao trào cách mạng giai đoạn nào?",
+        options: [
+          "1930 - 1931",
+          "1936 - 1939",
+          "1939 - 1945",
+          "1945 - 1946"
+        ],
+        correctIndex: 0,
+        explanation: "Xô viết Nghệ - Tĩnh là đỉnh cao của cao trào cách mạng 1930 - 1931."
       }
     ]
   },
@@ -174,14 +267,22 @@ export const CHAPTERS_DATA: Chapter[] = [
       },
       {
         id: "ch2-2",
-        title: "II. Kháng chiến chống Mỹ, cứu nước (1954 - 1975)",
+        title: "II. Chiến lược cách mạng hai miền (1954 - 1973)",
         content: [
           "Đặc điểm đất nước tạm thời bị chia cắt làm hai miền: Miền Bắc xây dựng CNXH làm hậu phương lớn; Miền Nam tiếp tục cách mạng dân tộc dân chủ nhân dân làm tiền tuyến lớn.",
           "Đánh bại các chiến lược chiến tranh của đế quốc Mỹ: Chiến tranh đơn phương (1954-1960 với phong trào Đồng Khởi), Chiến tranh đặc biệt (1961-1965), Chiến tranh cục bộ (1965-1968 với Tổng tiến công Tết Mậu Thân 1968), Việt Nam hóa chiến tranh (1969-1973).",
+        ],
+        keyPoints: [
+          "Tiến hành đồng thời hai chiến lược cách mạng ở hai miền là nét độc đáo, sáng tạo chưa từng có trong lịch sử."
+        ]
+      },
+      {
+        id: "ch2-3",
+        title: "III. Đại thắng mùa Xuân 1975",
+        content: [
           "Hiệp định Paris (1973) buộc Mỹ rút quân về nước. Cuộc Tổng tiến công và nổi dậy mùa Xuân 1975 với đỉnh cao là Chiến dịch Hồ Chí Minh lịch sử ngày 30/4/1975 giải phóng hoàn toàn miền Nam, thống nhất đất nước."
         ],
         keyPoints: [
-          "Tiến hành đồng thời hai chiến lược cách mạng ở hai miền là nét độc đáo, sáng tạo chưa từng có trong lịch sử.",
           "Đại thắng mùa Xuân 1975 kết thúc 30 năm chiến tranh giải phóng, mở ra kỷ nguyên độc lập thống nhất đi lên CNXH."
         ]
       }
@@ -210,6 +311,54 @@ export const CHAPTERS_DATA: Chapter[] = [
         ],
         correctIndex: 0,
         explanation: "Đại hội III (1960) hoàn chỉnh đường lối chiến lược: cách mạng XHCN ở miền Bắc giữ vai trò quyết định nhất, cách mạng dân tộc dân chủ nhân dân ở miền Nam giữ vai trò quyết định trực tiếp."
+      },
+      {
+        id: "q-ch2-3",
+        question: "Lời kêu gọi toàn quốc kháng chiến của Chủ tịch Hồ Chí Minh được phát đi vào ngày nào?",
+        options: [
+          "19/12/1946",
+          "2/9/1945",
+          "7/5/1954",
+          "30/4/1975"
+        ],
+        correctIndex: 0,
+        explanation: "Ngày 19/12/1946 Chủ tịch Hồ Chí Minh ra Lời kêu gọi toàn quốc kháng chiến."
+      },
+      {
+        id: "q-ch2-4",
+        question: "Chiến thắng nào buộc thực dân Pháp phải ký Hiệp định Giơnevơ (1954)?",
+        options: [
+          "Điện Biên Phủ",
+          "Việt Bắc Thu - Đông 1947",
+          "Biên giới 1950",
+          "Chiến dịch Hồ Chí Minh"
+        ],
+        correctIndex: 0,
+        explanation: "Chiến thắng Điện Biên Phủ năm 1954 đập tan kế hoạch Nava, buộc Pháp ký Hiệp định Giơnevơ."
+      },
+      {
+        id: "q-ch2-5",
+        question: "Phong trào nào là bước ngoặt của cách mạng miền Nam trong giai đoạn 1954 - 1960?",
+        options: [
+          "Phong trào Đồng Khởi",
+          "Tổng tiến công Tết Mậu Thân",
+          "Chiến dịch Tây Nguyên",
+          "Hiệp định Paris"
+        ],
+        correctIndex: 0,
+        explanation: "Giáo trình nêu phong trào Đồng Khởi là dấu mốc của giai đoạn Chiến tranh đơn phương (1954 - 1960)."
+      },
+      {
+        id: "q-ch2-6",
+        question: "Chiến dịch cuối cùng kết thúc cuộc kháng chiến chống Mỹ, cứu nước là gì?",
+        options: [
+          "Chiến dịch Hồ Chí Minh",
+          "Chiến dịch Điện Biên Phủ",
+          "Chiến dịch Biên giới",
+          "Chiến dịch Việt Bắc"
+        ],
+        correctIndex: 0,
+        explanation: "Chiến dịch Hồ Chí Minh kết thúc ngày 30/4/1975, giải phóng hoàn toàn miền Nam, thống nhất đất nước."
       }
     ]
   },
@@ -273,6 +422,54 @@ export const CHAPTERS_DATA: Chapter[] = [
         ],
         correctIndex: 0,
         explanation: "Cương lĩnh (bổ sung, phát triển năm 2011) xác định mục tiêu tổng quát: Dân giàu, nước mạnh, dân chủ, công bằng, văn minh."
+      },
+      {
+        id: "q-ch3-3",
+        question: "Đại hội nào của Đảng khởi xướng công cuộc Đổi mới?",
+        options: [
+          "Đại hội VI (12/1986)",
+          "Đại hội III (1960)",
+          "Đại hội V (1982)",
+          "Đại hội VII (1991)"
+        ],
+        correctIndex: 0,
+        explanation: "Đại hội VI (12/1986) khởi xướng đường lối Đổi mới toàn diện đất nước."
+      },
+      {
+        id: "q-ch3-4",
+        question: "Nguyên nhân chủ yếu của khủng hoảng kinh tế - xã hội trước Đổi mới là gì?",
+        options: [
+          "Duy trì quá lâu cơ chế kế hoạch hóa tập trung quan liêu, bao cấp",
+          "Thiếu sự lãnh đạo của Đảng",
+          "Mở cửa hội nhập quá sớm",
+          "Thiếu lao động"
+        ],
+        correctIndex: 0,
+        explanation: "Giáo trình chỉ ra nguyên nhân chính là sai lầm trong bố trí cơ cấu kinh tế và duy trì lâu dài cơ chế kế hoạch hóa tập trung quan liêu, bao cấp."
+      },
+      {
+        id: "q-ch3-5",
+        question: "Tên nước Cộng hòa Xã hội Chủ nghĩa Việt Nam được Quốc hội đặt vào thời điểm nào?",
+        options: [
+          "Năm 1976 (Quốc hội khóa VI)",
+          "Năm 1945",
+          "Năm 1954",
+          "Năm 1986"
+        ],
+        correctIndex: 0,
+        explanation: "Sau thống nhất đất nước về mặt nhà nước (1975 - 1976), Quốc hội khóa VI đặt tên nước là Cộng hòa Xã hội Chủ nghĩa Việt Nam."
+      },
+      {
+        id: "q-ch3-6",
+        question: "Chỉ thị 100-CT/TW (khoán 100) thuộc nhóm những bước đột phá nào?",
+        options: [
+          "Tìm tòi trước Đổi mới",
+          "Chính sách đối ngoại sau 1991",
+          "Cương lĩnh 2011",
+          "Kháng chiến chống Pháp"
+        ],
+        correctIndex: 0,
+        explanation: "Khoán 100 là một trong những bước đột phá tìm tòi trong thực tiễn, chuẩn bị cho đường lối Đổi mới toàn diện."
       }
     ]
   }
@@ -650,3 +847,13 @@ export const COMPARISONS_DATA: DocumentComparison[] = [
     ]
   }
 ];
+
+// Đáp án đúng trong dữ liệu luôn ở vị trí 0 — xoay vòng theo id để vị trí đáp án đa dạng nhưng ổn định giữa các lần tải.
+for (const ch of CHAPTERS_DATA) {
+  for (const q of ch.reviewQuestions) {
+    const n = q.options.length;
+    const k = [...q.id].reduce((a, c) => a + c.charCodeAt(0), 0) % n;
+    q.options = q.options.map((_, i) => q.options[(i - k + n) % n]);
+    q.correctIndex = (q.correctIndex + k) % n;
+  }
+}
