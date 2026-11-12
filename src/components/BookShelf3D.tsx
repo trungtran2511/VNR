@@ -68,7 +68,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "intro",
     volNum: "TẬP 01",
     code: "CHƯƠNG MỞ ĐẦU",
-    title: "Nhập Môn Lịch Sử Đảng",
+    title: "Nhập môn Lịch sử Đảng",
     spineTitleMain: "NHẬP MÔN",
     spineTitleSub: "LỊCH SỬ ĐẢNG",
     coverMainTitle: ["NHẬP MÔN", "LỊCH SỬ", "ĐẢNG CSVN"],
@@ -93,7 +93,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch1",
     volNum: "TẬP 02",
     code: "CHƯƠNG 1 • PHẦN I",
-    title: "Đảng Cộng Sản Việt Nam Ra Đời",
+    title: "Đảng Cộng sản Việt Nam ra đời",
     spineTitleMain: "ĐẢNG CSVN",
     spineTitleSub: "RA ĐỜI 1930",
     coverMainTitle: ["ĐẢNG CỘNG SẢN", "VIỆT NAM", "RA ĐỜI 1930"],
@@ -118,7 +118,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch1",
     volNum: "TẬP 03",
     code: "CHUYÊN ĐỀ VĂN KIỆN",
-    title: "Cương Lĩnh 2/1930 & Luận Cương 10/1930",
+    title: "Cương lĩnh 2/1930 & Luận cương 10/1930",
     spineTitleMain: "CƯƠNG LĨNH",
     spineTitleSub: "LUẬN CƯƠNG 1930",
     coverMainTitle: ["CƯƠNG LĨNH", "& LUẬN CƯƠNG", "NĂM 1930"],
@@ -143,7 +143,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch1",
     volNum: "TẬP 04",
     code: "CHƯƠNG 1 • CAO TRÀO",
-    title: "Cao Trào Dân Sinh Dân Chủ",
+    title: "Cao trào dân sinh, dân chủ",
     spineTitleMain: "CAO TRÀO",
     spineTitleSub: "DÂN SINH DÂN CHỦ",
     coverMainTitle: ["CAO TRÀO", "DÂN SINH", "DÂN CHỦ"],
@@ -168,7 +168,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch1",
     volNum: "TẬP 05",
     code: "CHƯƠNG 1 • HỘI NGHỊ TW 8",
-    title: "Chuyển Hướng Chiến Lược & Việt Minh",
+    title: "Chuyển hướng chiến lược & Việt Minh",
     spineTitleMain: "CHIẾN LƯỢC",
     spineTitleSub: "VIỆT MINH 1941",
     coverMainTitle: ["CHUYỂN HƯỚNG", "CHIẾN LƯỢC", "& VIỆT MINH"],
@@ -193,7 +193,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch1",
     volNum: "TẬP 06",
     code: "CHƯƠNG 1 • ĐỈNH CAO",
-    title: "Cách Mạng Tháng Tám 1945",
+    title: "Cách mạng Tháng Tám 1945",
     spineTitleMain: "CÁCH MẠNG",
     spineTitleSub: "THÁNG TÁM 1945",
     coverMainTitle: ["CÁCH MẠNG", "THÁNG TÁM", "NĂM 1945"],
@@ -218,7 +218,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch2",
     volNum: "TẬP 07",
     code: "CHƯƠNG 2 • PHẦN I",
-    title: "Kháng Chiến Chống Pháp & Điện Biên Phủ",
+    title: "Kháng chiến chống Pháp & Điện Biên Phủ",
     spineTitleMain: "ĐIỆN BIÊN",
     spineTitleSub: "KHÁNG CHIẾN PHÁP",
     coverMainTitle: ["KHÁNG CHIẾN", "CHỐNG PHÁP &", "ĐIỆN BIÊN PHỦ"],
@@ -243,7 +243,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch2",
     volNum: "TẬP 08",
     code: "CHƯƠNG 2 • ĐẠI HỘI III",
-    title: "Chiến Lược Cách Mạng Hai Miền",
+    title: "Chiến lược cách mạng hai miền",
     spineTitleMain: "HAI MIỀN",
     spineTitleSub: "CHIẾN LƯỢC 1960",
     coverMainTitle: ["CHIẾN LƯỢC", "CÁCH MẠNG", "HAI MIỀN"],
@@ -268,7 +268,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch2",
     volNum: "TẬP 09",
     code: "CHƯƠNG 2 • ĐẠI THẮNG",
-    title: "Đại Thắng Mùa Xuân 1975",
+    title: "Đại thắng mùa Xuân 1975",
     spineTitleMain: "ĐẠI THẮNG",
     spineTitleSub: "MÙA XUÂN 1975",
     coverMainTitle: ["ĐẠI THẮNG", "MÙA XUÂN", "NĂM 1975"],
@@ -293,7 +293,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch3",
     volNum: "TẬP 10",
     code: "CHƯƠNG 3 • ĐẠI HỘI VI",
-    title: "Khởi Xướng Công Cuộc Đổi Mới",
+    title: "Khởi xướng công cuộc Đổi mới",
     spineTitleMain: "ĐỔI MỚI",
     spineTitleSub: "ĐẠI HỘI VI 1986",
     coverMainTitle: ["KHỞI XƯỚNG", "CÔNG CUỘC", "ĐỔI MỚI 1986"],
@@ -318,7 +318,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch3",
     volNum: "TẬP 11",
     code: "BIÊN NIÊN SỬ",
-    title: "Biên Niên Mốc Son & Hội Nhập",
+    title: "Biên niên mốc son & hội nhập",
     spineTitleMain: "BIÊN NIÊN",
     spineTitleSub: "MỐC SON 1930-2026",
     coverMainTitle: ["BIÊN NIÊN", "MỐC SON &", "HỘI NHẬP"],
@@ -343,7 +343,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     chapterId: "ch3",
     volNum: "TẬP 12",
     code: "NGÂN HÀNG ĐỀ THI",
-    title: "Luyện Thi Trắc Nghiệm 2026",
+    title: "Luyện thi trắc nghiệm 2026",
     spineTitleMain: "NGÂN HÀNG",
     spineTitleSub: "TRẮC NGHIỆM 2026",
     coverMainTitle: ["TỔNG KẾT &", "NGÂN HÀNG", "ĐỀ THI 2026"],
@@ -765,7 +765,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
   const coverRefs = useRef<Array<HTMLDivElement | null>>([]);
   const playRingRef = useRef<HTMLButtonElement>(null);
   const timelineDotRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
+
   const bgSpotlightRef = useRef<HTMLDivElement>(null);
   const bgSunRef = useRef<SVGGElement>(null);
   const bgLandmarksRef = useRef<SVGGElement>(null);
@@ -1301,24 +1301,6 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         playRingRef.current.style.transform = `scale(${ringScale.toFixed(3)})`;
       }
 
-      // 7. Custom cursor smoothing & state classes
-      const curEase = 1 - Math.exp(-16 * dt);
-      m.cx += (m.mx - m.cx) * curEase;
-      m.cy += (m.my - m.cy) * curEase;
-
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${m.cx.toFixed(1)}px, ${m.cy.toFixed(1)}px, 0)`;
-        cursorRef.current.classList.toggle(
-          "open",
-          m.onCover && !isDetailOpenRef.current
-        );
-        cursorRef.current.classList.toggle(
-          "spine",
-          !m.onCover && m.hoverVirtual !== -1 && !isDetailOpenRef.current
-        );
-        cursorRef.current.classList.toggle("btn", m.overBtn && !m.onCover);
-      }
-
       rafId = requestAnimationFrame(tick);
     };
 
@@ -1349,41 +1331,9 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
       }
     };
 
-    const onPointerDown = (e: PointerEvent) => {
-      if (cursorRef.current) {
-        cursorRef.current.classList.add("stamping");
-      }
-
-      // Tạo vết mực triện son đỏ in trực tiếp lên trang giấy (Bằng SVG vector cố định tỷ lệ, không bao giờ tràn viền)
-      const stamp = document.createElement("div");
-      stamp.className = "stamp-mark-print";
-      const rot = (Math.random() * 14 - 7).toFixed(1);
-      stamp.style.left = `${e.clientX}px`;
-      stamp.style.top = `${e.clientY}px`;
-      stamp.style.transform = `scale(1) rotate(${rot}deg)`;
-      stamp.innerHTML = `
-        <svg viewBox="0 0 120 80" width="72" height="48" style="overflow:visible;display:block;">
-          <!-- Khung triện son chữ nhật cổ điển viền đơn dày 3px -->
-          <rect x="4" y="4" width="112" height="72" rx="6" fill="rgba(184, 41, 30, 0.12)" stroke="#A82015" stroke-width="3"/>
-          <!-- Chữ LƯU TRỮ (cách mép viền an toàn 19px) -->
-          <text x="60" y="29" text-anchor="middle" fill="#A82015" font-family="'Inter Tight', sans-serif" font-size="13" font-weight="900" letter-spacing="2">LƯU TRỮ</text>
-          <!-- Ngôi sao son đỏ tâm triện -->
-          <polygon points="60,35 62.4,40 68,40 63.5,43.5 65.2,49 60,46 54.8,49 56.5,43.5 52,40 57.6,40" fill="#A82015"/>
-          <!-- Chữ LSĐ • 2026 (cách mép viền an toàn 14px) -->
-          <text x="60" y="65" text-anchor="middle" fill="#A82015" font-family="'Inter Tight', sans-serif" font-size="12" font-weight="900" letter-spacing="1.5">LSĐ • 2026</text>
-        </svg>
-      `;
-      document.body.appendChild(stamp);
-      window.setTimeout(() => {
-        stamp.remove();
-      }, 3200);
-    };
-
     const onPointerUp = () => {
       const m = motionRef.current;
-      if (cursorRef.current) {
-        cursorRef.current.classList.remove("stamping");
-      }
+
       if (!m.isDragging) return;
       m.isDragging = false;
       m.T = Math.round(m.T);
@@ -1419,14 +1369,12 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
     };
 
     window.addEventListener("pointermove", onPointerMove);
-    window.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointerup", onPointerUp);
     window.addEventListener("wheel", onWheel, { passive: true });
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointerup", onPointerUp);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKeyDown);
@@ -1477,7 +1425,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
   const timelineYears = Array.from({ length: 36 }, (_, idx) => 1925 + idx * 2.15);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden select-none cursor-custom-active">
+    <div className="relative w-screen h-screen overflow-hidden select-none">
       {/* Off-screen probe element to measure --H */}
       <div
         ref={probeRef}
@@ -1497,7 +1445,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
       <svg
         aria-hidden="true"
         className="fixed inset-0 w-full h-full pointer-events-none z-40"
-        style={{ mixBlendMode: "multiply", opacity: 0.58 }}
+        style={{ mixBlendMode: "multiply", opacity: 0.16 }}
       >
         <filter id="paper-grain-filter">
           <feTurbulence
@@ -1521,7 +1469,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
           backgroundImage: 'url("/vintage-bg.jpg")',
           backgroundSize: "cover",
           backgroundPosition: "center 42%",
-          opacity: 0.26,
+          opacity: 0.055,
           filter: "blur(2.5px) saturate(0.85) contrast(1.08)",
           mixBlendMode: "multiply",
           maskImage: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.95) 100%)",
@@ -1532,7 +1480,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
 
       {/* 1. Top Bar */}
       <header className="fixed top-0 left-0 right-0 h-[60px] md:h-[76px] px-4 md:px-9 flex items-center justify-between text-primary z-30">
-        <div className="flex items-center gap-4">
+        <div className="shelf-header-brand flex items-center gap-4">
           <button
             onClick={() => jumpToBookIndex(5)}
             className="lbl text-primary hover:opacity-80 transition-opacity"
@@ -1540,7 +1488,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
             LỊCH SỬ ĐẢNG CSVN
           </button>
           <span className="w-[22px] md:w-[40px] h-px bg-primary inline-block" />
-          <span className="lbl text-primary">GIÁO TRÌNH LƯU TRỮ 2026</span>
+          <span className="lbl text-primary">KHÔNG GIAN HỌC LỊCH SỬ</span>
         </div>
 
         <nav
@@ -1816,11 +1764,11 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         className="fixed left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2.5 pointer-events-none"
         style={{ top: "calc(var(--cy) + var(--H) / 2 + 4.2vh)" }}
       >
-        {/* Title in Inter Tight 600, cobalt */}
+        {/* Editorial display title */}
         <div
           ref={capTitleRef}
-          className="caption-mask font-semibold text-primary tracking-[-0.015em] leading-[1.12]"
-          style={{ fontSize: "clamp(26px, 3.2vw, 44px)" }}
+          className="caption-mask shelf-caption-title font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
+          style={{ fontSize: "clamp(30px, 3.6vw, 52px)" }}
         >
           <span>{initialBook.title}</span>
         </div>
@@ -1828,8 +1776,8 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         {/* Subtitle in cobalt .lbl (100% Vietnamese) */}
         <div
           ref={capSubRef}
-          className="caption-mask lbl text-primary"
-          style={{ fontSize: "9.5px", letterSpacing: "0.22em" }}
+          className="caption-mask shelf-caption-meta lbl text-primary"
+          style={{ fontSize: "11px", letterSpacing: "0.08em" }}
         >
           <span>{`${initialBook.volNum} • ${initialBook.subtitle}`}</span>
         </div>
@@ -1840,7 +1788,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         {/* Year — Genre line */}
         <div
           ref={capYearRef}
-          className="caption-mask font-medium text-foreground"
+          className="caption-mask shelf-caption-meta font-medium text-muted-foreground"
           style={{ fontSize: "10.5px", letterSpacing: "0.08em" }}
         >
           <span>{`${initialBook.period} — ${initialBook.genre}`}</span>
@@ -1942,10 +1890,10 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
 
       {/* 9. Footer */}
       <footer className="fixed left-4 right-4 md:left-9 md:right-9 bottom-[18px] md:bottom-[24px] flex items-center justify-between z-20">
-        <span className="lbl text-primary text-[9px] md:text-[10.5px]">
-          © GIÁO TRÌNH LỊCH SỬ ĐẢNG CỘNG SẢN VIỆT NAM • BỘ GD&ĐT (2026)
+        <span className="shelf-footer-credit lbl text-primary text-[9px] md:text-[10.5px]">
+          LỊCH SỬ ĐẢNG • KHÔNG GIAN TỰ HỌC
         </span>
-        <div className="flex items-center gap-3 lbl text-primary text-[9px] md:text-[10.5px]">
+        <div className="shelf-footer-actions flex items-center gap-3 lbl text-primary text-[9px] md:text-[10.5px]">
           <button onClick={() => openDetailSheet()} className="hover:underline">
             MỞ TẬP ĐANG CHỌN
           </button>
@@ -1956,7 +1904,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
             }
             className="hover:underline"
           >
-            ĐỌC TOÀN VĂN
+            ĐỌC TÓM LƯỢC
           </button>
         </div>
       </footer>
@@ -2014,7 +1962,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
                 ref={(el) => {
                   detailLineRefs.current[1] = el;
                 }}
-                className="font-semibold text-primary tracking-[-0.03em] leading-[1.04]"
+                className="font-display font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
                 style={{ fontSize: "clamp(36px, 4.6vw, 68px)" }}
               >
                 {detailBook.title}
@@ -2033,27 +1981,27 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
               </div>
             </div>
 
-            {/* Line 3: Synopsis in Newsreader serif */}
+            {/* Line 3: Synopsis in the shared reading face */}
             <div className="overflow-hidden">
               <p
                 ref={(el) => {
                   detailLineRefs.current[3] = el;
                 }}
-                className="font-serif text-[17px] leading-[1.58] text-foreground max-w-[46ch]"
+                className="font-body text-[17px] leading-[1.58] text-foreground max-w-[46ch]"
               >
                 {detailBook.summary}
               </p>
             </div>
 
-            {/* Line 4: Italic credit in Newsreader italic */}
+            {/* Line 4: Source note */}
             <div className="overflow-hidden">
               <p
                 ref={(el) => {
                   detailLineRefs.current[4] = el;
                 }}
-                className="font-serif italic text-[15px] text-muted-foreground"
+                className="font-body text-[15px] text-muted-foreground"
               >
-                Biên soạn chuẩn Giáo trình Bộ Giáo dục và Đào tạo (2026) • Ấn phẩm Lưu trữ Quốc gia
+                Bản tóm lược phục vụ tự học. Đọc tài liệu PDF để đối chiếu nội dung đầy đủ.
               </p>
             </div>
 
@@ -2075,7 +2023,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
                   size="lg"
                   icon={<BookOpen className="size-4" strokeWidth={1.5} />}
                 >
-                  ĐỌC TOÀN VĂN CHƯƠNG NÀY
+                  BẮT ĐẦU HỌC
                 </AppButton>
 
                 <AppLink
@@ -2123,21 +2071,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         </div>
       </div>
 
-      {/* 11. Custom Red Seal Stamp Cursor (Con trỏ Triện son đỏ cổ điển) */}
-      <div ref={cursorRef} className="custom-cursor" aria-hidden="true">
-        <div className="seal-cursor-outer">
-          <div className="seal-cursor-inner" />
-          {/* Biểu tượng mộc triện son: Ngôi sao cách điệu */}
-          <svg viewBox="0 0 24 24" className="seal-cursor-emblem" fill="currentColor">
-            <polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" />
-          </svg>
-          <div className="seal-cursor-label">
-            ĐÃ DUYỆT
-            <br />
-            MỞ TẬP
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 }

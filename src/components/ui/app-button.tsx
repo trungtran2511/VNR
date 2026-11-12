@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "../../lib/utils";
 
 export type ControlVariant = "primary" | "outline" | "ghost" | "segment";
 export type ControlSize = "xs" | "sm" | "md" | "lg";
@@ -45,7 +46,7 @@ export function controlClassName({
         : SEGMENT_CLASS.idle
       : VARIANT_CLASS[variant];
 
-  return [
+  return cn(
     "lbl inline-flex items-center justify-center gap-2 whitespace-nowrap select-none cursor-pointer",
     "transition-colors duration-150",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
@@ -53,9 +54,7 @@ export function controlClassName({
     SIZE_CLASS[size],
     variantClass,
     className
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 }
 
 interface ControlBaseProps {

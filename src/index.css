@@ -2,8 +2,8 @@
 
 :root {
   /* Core Editorial Paper & Archival Heritage Tokens (Swiss Modernism + Museum Heritage) */
-  --paper: #E6E1D5;
-  --sheet: #EDE8DC;
+  --paper: #F5F2E9;
+  --sheet: #FCFAF5;
   --surface-spotlight: radial-gradient(
     65% 55% at 50% 38%,
     rgba(255, 252, 245, 0.72) 0%,
@@ -11,10 +11,10 @@
     rgba(224, 218, 204, 0.15) 75%,
     transparent 100%
   );
-  --ink: #141414;
+  --ink: #252B2A;
   --muted-ink: #5F5C54;
-  --cobalt: #16369E;
-  --cobalt-soft: rgba(22, 54, 158, 0.08);
+  --cobalt: #233F60;
+  --cobalt-soft: rgba(35, 63, 96, 0.07);
   --gold-bronze: #B28834;
   --gold-bronze-soft: rgba(178, 136, 52, 0.09);
   --rule: rgba(20, 20, 20, 0.88);
@@ -55,8 +55,9 @@
   --success: var(--forest);
   --success-soft: var(--forest-soft);
 
-  --font-sans: "Inter Tight", system-ui, -apple-system, sans-serif;
-  --font-serif: "Newsreader", Georgia, serif;
+  --type-body: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --type-display: "Cormorant Garamond", Georgia, serif;
+
 }
 
 @media (max-width: 767px) {
@@ -84,10 +85,10 @@
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
 
-  --font-display: var(--font-serif);
-  --font-body: var(--font-sans);
-  --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
+  --font-display: var(--type-display);
+  --font-body: var(--type-body);
+  --font-sans: var(--type-body);
+  --font-serif: var(--type-display);
 }
 
 @layer base {
@@ -101,29 +102,23 @@
     overflow: hidden;
     background-color: var(--paper);
     color: var(--ink);
-    font-family: var(--font-sans);
-    user-select: none;
-    -webkit-user-select: none;
+    font-family: var(--type-body);
+    user-select: text;
+    -webkit-user-select: text;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-@media (pointer: fine) {
-  .cursor-custom-active,
-  .cursor-custom-active button,
-  .cursor-custom-active a {
-    cursor: none !important;
-  }
-}
+
 
 /* Catalogue Label & Box System */
 .lbl {
-  font-family: var(--font-sans);
+  font-family: var(--type-body);
   font-weight: 600;
-  font-size: 10.5px;
-  line-height: 1;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 }
 
@@ -144,7 +139,7 @@
   position: fixed;
   z-index: 1;
   writing-mode: vertical-rl;
-  font-family: var(--font-sans);
+  font-family: var(--type-body);
   font-weight: 800;
   font-size: min(14.8vh, 9.6vw);
   line-height: 1.5;
@@ -242,12 +237,12 @@
   inset: 0;
   pointer-events: none;
   z-index: 35;
-  box-shadow: inset 0 0 120px rgba(28, 20, 12, 0.22), inset 0 0 45px rgba(28, 20, 12, 0.12);
+  box-shadow: inset 0 0 120px rgba(28, 20, 12, 0.04), inset 0 0 45px rgba(28, 20, 12, 0.02);
   background: radial-gradient(
     circle at 50% 50%,
     transparent 58%,
     rgba(32, 24, 16, 0.08) 82%,
-    rgba(24, 18, 12, 0.24) 100%
+    rgba(24, 18, 12, 0.04) 100%
   );
 }
 
@@ -261,11 +256,11 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-color: #E2DDD0;
+  background-color: var(--paper);
   /* Lớp lưới vuông sắc nét tinh tế từ ảnh mẫu */
   background-image:
-    linear-gradient(to right, rgba(92, 64, 42, 0.075) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(92, 64, 42, 0.075) 1px, transparent 1px);
+    linear-gradient(to right, rgba(92, 64, 42, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(92, 64, 42, 0.025) 1px, transparent 1px);
   background-size: 36px 36px;
   background-position: center center;
 }
@@ -288,7 +283,7 @@
       ellipse 95% 85% at 50% 50%,
       transparent 45%,
       rgba(138, 102, 66, 0.08) 75%,
-      rgba(92, 64, 40, 0.22) 100%
+      rgba(92, 64, 40, 0.04) 100%
     );
 }
 
@@ -301,7 +296,7 @@
   background-image: url("/vintage-bg.jpg");
   background-size: cover;
   background-position: center 42%;
-  opacity: 0.16;
+  opacity: 0.035;
   mix-blend-mode: multiply;
   filter: blur(1.5px) sepia(0.2) contrast(1.05);
 }
@@ -389,159 +384,33 @@
   inset: 0;
 }
 
-/* ============================================================== */
-/* CUSTOM CURSOR: TRIỆN SON ĐỎ / CON DẤU LƯU TRỮ (RED SEAL STAMP) */
-/* ============================================================== */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 52px;
-  height: 52px;
-  margin-left: -26px;
-  margin-top: -26px;
-  z-index: 100;
-  pointer-events: none;
-  display: none;
+/* Shared editorial hierarchy: display faces carry titles; UI and lessons stay readable. */
+@layer base {
+  h1 { font-family: var(--type-display); font-weight: 600; text-wrap: balance; }
+  button, a, input { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 4px; }
+}
+.shelf-caption-title { font-family: var(--type-display); padding-block: 0.12em; }
+.halftone-watermark { opacity: 0.22; }
+.reader-content { font-size: 16px; line-height: 1.85; max-width: 68ch; }
+.reader-section { scroll-margin-top: 24px; }
+.reader-section-title { font-family: var(--type-display); font-size: clamp(25px, 3vw, 32px); font-weight: 600; line-height: 1.25; }
+.chapter-guide { background: var(--sheet); border: 1px solid var(--rule-soft); border-radius: 12px; padding: clamp(20px, 3vw, 32px); }
+.chapter-guide a { display: flex; align-items: baseline; gap: 14px; padding-block: 12px; color: var(--ink); font-size: 14px; line-height: 1.65; border-bottom: 1px solid var(--rule-soft); }
+.chapter-guide a:last-child { border-bottom: 0; }
+.chapter-guide a:hover { color: var(--cobalt); }
+.chapter-guide a span:first-child { color: var(--gold-bronze); font-variant-numeric: tabular-nums; font-size: 12px; }
+@media (max-width: 767px) {
+  .shelf-header-brand { max-width: 58%; }
+  .shelf-header-brand > span { display: none; }
+  .shelf-footer-credit { max-width: 45%; font-size: 8px; line-height: 1.6; }
+  .shelf-footer-actions { font-size: 9px; gap: 6px; }
+  .shelf-caption-title { width: 76vw; }
+  .shelf-caption-meta { width: 80vw; font-size: 10px !important; letter-spacing: 0.05em !important; }
+  .chapter-review-heading { align-items: flex-start; gap: 16px; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-@media (pointer: fine) {
-  .custom-cursor {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-/* Khung Triện Son Vuông Bo Nhẹ (Square Seal Frame) */
-.seal-cursor-outer {
-  position: absolute;
-  inset: 0;
-  border: 2px solid #B8291E;
-  border-radius: 4px;
-  background-color: rgba(184, 41, 30, 0.04);
-  box-shadow: 0 0 0 1px rgba(184, 41, 30, 0.15) inset;
-  transition:
-    transform 0.35s var(--ease),
-    background-color 0.3s var(--ease),
-    border-color 0.3s var(--ease),
-    opacity 0.3s var(--ease);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Bỏ viền trong của con trỏ để chữ không bị đè */
-.seal-cursor-inner {
-  display: none;
-}
-
-/* Họa Tiết Tâm Triện: Ngôi Sao Vàng / Mộc Lưu Trữ */
-.seal-cursor-emblem {
-  width: 14px;
-  height: 14px;
-  color: #B8291E;
-  opacity: 0.85;
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
-}
-
-/* Chữ Triện Đóng Dấu (MỞ TẬP / ĐÃ DUYỆT) */
-.seal-cursor-label {
-  position: absolute;
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: 8.5px;
-  line-height: 1.15;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #F3F0EA;
-  text-align: center;
-  transform: scale(0);
-  transition: transform 0.35s var(--ease);
-}
-
-/* Trạng Thái Rê Chuột Qua Gáy Sách (.spine) */
-.custom-cursor.spine .seal-cursor-outer {
-  transform: scale(0.82) rotate(-3deg);
-  background-color: rgba(184, 41, 30, 0.08);
-}
-
-/* Trạng Thái Rê Chuột Qua Nút Bấm / Liên Kết (.btn) */
-.custom-cursor.btn .seal-cursor-outer {
-  transform: scale(0.65) rotate(0deg);
-  border-color: #1F3FB0;
-  background-color: rgba(31, 63, 176, 0.08);
-}
-.custom-cursor.btn .seal-cursor-inner {
-  border-color: rgba(31, 63, 176, 0.6);
-}
-.custom-cursor.btn .seal-cursor-emblem {
-  color: #1F3FB0;
-  transform: scale(0.7);
-}
-
-/* Trạng Thái Trỏ Vào Mặt Bìa Đang Mở (.open) - Triện Son Đỏ Rực */
-.custom-cursor.open .seal-cursor-outer {
-  transform: scale(1.45) rotate(-6deg);
-  background-color: #A82015;
-  border-color: #7D150C;
-  box-shadow: 0 4px 14px rgba(168, 32, 21, 0.4), 0 0 0 1.5px rgba(255, 230, 180, 0.4) inset;
-}
-.custom-cursor.open .seal-cursor-inner {
-  border-color: rgba(255, 230, 180, 0.6);
-}
-.custom-cursor.open .seal-cursor-emblem {
-  transform: scale(0);
-  opacity: 0;
-}
-.custom-cursor.open .seal-cursor-label {
-  transform: scale(1);
-}
-
-/* Hiệu Ứng Bấm Chuột Dập Dấu (Stamp Down Press) */
-.custom-cursor.stamping .seal-cursor-outer {
-  transform: scale(0.88) !important;
-  box-shadow: 0 1px 4px rgba(168, 32, 21, 0.6) !important;
-}
-
-/* ============================================================== */
-/* VẾT MỰC TRIỆN SON IN TRÊN TRANG GIẤY (PERMANENT STAMP MARKS)   */
-/* ============================================================== */
-.stamp-mark-print {
-  position: fixed;
-  width: 72px;
-  height: 48px;
-  margin-left: -36px;
-  margin-top: -24px;
-  pointer-events: none;
-  z-index: 35;
-  mix-blend-mode: multiply;
-  animation: stampFadeOut 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Bỏ viền trong của vết đóng dấu để chữ không bị đè lên viền */
-.stamp-mark-print::after {
-  display: none;
-}
-
-@keyframes stampFadeOut {
-  0% {
-    transform: scale(1.22);
-    opacity: 0.95;
-  }
-  12% {
-    transform: scale(1);
-    opacity: 0.88;
-  }
-  70% {
-    transform: scale(1);
-    opacity: 0.75;
-  }
-  100% {
-    transform: scale(0.98);
-    opacity: 0;
-  }
-}
+.tape-face { cursor: pointer; }

@@ -128,7 +128,7 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
                 {introExpanded ? <ChevronUp className="size-4 shrink-0" strokeWidth={1.5} /> : <ChevronDown className="size-4 shrink-0" strokeWidth={1.5} />}
               </button>
               {introExpanded && (
-                <p className="mt-2 font-serif text-xs italic leading-relaxed text-muted-foreground">
+                <p className="mt-2 font-body text-xs italic leading-relaxed text-muted-foreground">
                   Ôn theo lịch giãn cách, thẻ khó sẽ quay lại sớm hơn.
                 </p>
               )}
@@ -208,7 +208,7 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
                   style={{ transform: "rotateY(180deg)" }}
                 >
                   <span className="lbl mb-3 text-primary">ĐÁP ÁN / Ý NGHĨA</span>
-                  <ul className="space-y-2.5 font-serif text-sm leading-relaxed text-foreground md:text-base">
+                  <ul className="space-y-2.5 font-body text-sm leading-relaxed text-foreground md:text-base">
                     {current.back.map((line, i) => <li key={i}>{line}</li>)}
                   </ul>
                 </div>
@@ -225,7 +225,7 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
           <div className="w-full max-w-2xl rounded-[var(--radius-surface)] border border-[var(--border-control)] bg-card p-6 text-center">
             <Layers className="mx-auto size-8 text-primary" strokeWidth={1.5} />
             <h2 className="mt-3 text-lg font-semibold text-foreground">Hết thẻ đến hạn trong phạm vi này</h2>
-            <p className="mt-2 font-serif text-sm text-muted-foreground">
+            <p className="mt-2 font-body text-sm text-muted-foreground">
               Bạn đã ôn xong. Các thẻ còn lại sẽ quay lại theo lịch giãn cách.
             </p>
             <AppButton

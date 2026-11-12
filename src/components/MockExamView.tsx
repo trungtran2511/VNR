@@ -93,12 +93,12 @@ export default function MockExamView({ chapters }: MockExamViewProps) {
             <span className="lbl text-primary">BẤM GIỜ</span>
           </div>
           <h1
-            className="font-semibold text-primary tracking-[-0.025em] leading-[1.08]"
+            className="font-display font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
             style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
           >
             Phòng Thi Thử
           </h1>
-          <p className="font-serif italic text-base text-muted-foreground">
+          <p className="font-body text-base text-muted-foreground">
             Đề trộn ngẫu nhiên từ ngân hàng câu hỏi. Hết giờ hệ thống tự nộp bài.
           </p>
         </header>
@@ -117,7 +117,7 @@ export default function MockExamView({ chapters }: MockExamViewProps) {
         </dl>
 
         {availableCount < 40 && (
-          <p className="font-serif text-sm text-muted-foreground">
+          <p className="font-body text-sm text-muted-foreground">
             Ngân hàng hiện có {availableCount} câu nên đề thi gồm {availableCount} câu. Đề sẽ
             đủ 40 câu khi bổ sung thêm câu hỏi vào dữ liệu giáo trình.
           </p>
@@ -336,7 +336,7 @@ export default function MockExamView({ chapters }: MockExamViewProps) {
                   Đáp án đúng: {q.options.find((o) => o.isCorrect)?.text}
                 </p>
               )}
-              <p className="font-serif text-sm text-muted-foreground">{q.explanation}</p>
+              <p className="font-body text-sm text-muted-foreground">{q.explanation}</p>
             </article>
           );
         })}

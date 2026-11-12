@@ -31,13 +31,13 @@ export default function TimelineView({ milestones }: TimelineViewProps) {
           </div>
 
           <h1
-            className="font-semibold text-primary tracking-[-0.025em] leading-[1.08]"
+            className="font-display font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
             style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
           >
             Dòng Thời Gian Mốc Son Lịch Sử
           </h1>
 
-          <p className="font-serif italic text-base text-muted-foreground">
+          <p className="font-body text-base text-muted-foreground">
             Hệ thống hóa {milestones.length} sự kiện bước ngoặt trong tiến trình lãnh đạo cách mạng của Đảng Cộng sản Việt Nam.
           </p>
         </div>
@@ -78,11 +78,11 @@ export default function TimelineView({ milestones }: TimelineViewProps) {
                 {item.title}
               </h2>
 
-              <p className="font-serif text-[16.5px] text-foreground leading-relaxed">
+              <p className="font-body text-[16.5px] text-foreground leading-relaxed">
                 {item.description}
               </p>
 
-              <div className="pt-2 font-serif text-sm text-muted-foreground leading-relaxed">
+              <div className="pt-2 font-body text-sm text-muted-foreground leading-relaxed">
                 <span className="lbl text-primary mr-2">Ý NGHĨA LỊCH SỬ:</span>
                 <span>{item.significance}</span>
               </div>

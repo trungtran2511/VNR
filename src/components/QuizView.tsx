@@ -47,13 +47,13 @@ export default function QuizView({ chapters }: QuizViewProps) {
           </div>
 
           <h1
-            className="font-semibold text-primary tracking-[-0.025em] leading-[1.08]"
+            className="font-display font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
             style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
           >
             Luyện Thi Trắc Nghiệm Lịch Sử Đảng
           </h1>
 
-          <p className="font-serif italic text-base text-muted-foreground">
+          <p className="font-body text-base text-muted-foreground">
             Hệ thống câu hỏi ôn tập trọng tâm kèm giải thích đối chiếu trực tiếp từ giáo trình.
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function QuizView({ chapters }: QuizViewProps) {
             )}
           </div>
 
-          <h2 className="font-serif text-xl text-foreground leading-snug">
+          <h2 className="font-body text-xl text-foreground leading-snug">
             {currentQ.question}
           </h2>
 
@@ -163,7 +163,7 @@ export default function QuizView({ chapters }: QuizViewProps) {
           </div>
 
           {isSubmitted && (
-            <div className="p-4 bg-muted border-l-2 border-primary font-serif text-sm text-foreground leading-relaxed">
+            <div className="p-4 bg-muted border-l-2 border-primary font-body text-sm text-foreground leading-relaxed">
               <span className="lbl text-primary mr-2">
                 GIẢI THÍCH GIÁO TRÌNH:
               </span>
@@ -214,7 +214,7 @@ export default function QuizView({ chapters }: QuizViewProps) {
         <div className="p-5 border border-primary bg-accent flex items-center justify-between">
           <div className="space-y-1">
             <div className="lbl text-primary">KẾT QUẢ TỔNG KẾT</div>
-            <div className="font-serif text-lg text-foreground">
+            <div className="font-body text-lg text-foreground">
               Đạt <strong>{score}</strong> / {total} câu đúng (
               {Math.round((score / total) * 100)}%)
             </div>

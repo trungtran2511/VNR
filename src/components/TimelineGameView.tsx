@@ -123,12 +123,12 @@ export default function TimelineGameView({ milestones }: TimelineGameViewProps) 
           <span className="lbl text-primary">XẾP MỐC SỬ</span>
         </div>
         <h1
-          className="font-semibold text-primary tracking-[-0.025em] leading-[1.08]"
+          className="font-display font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
           style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
         >
           Sắp Xếp Dòng Thời Gian
         </h1>
-        <p className="font-serif italic text-base text-muted-foreground">
+        <p className="font-body text-base text-muted-foreground">
           Kéo thả, hoặc chọn một thẻ rồi chọn ô trống, để xếp {truth.length} sự kiện (bốc ngẫu
           nhiên từ kho {milestones.length} mốc) theo đúng thứ tự thời gian.
         </p>
@@ -177,7 +177,7 @@ export default function TimelineGameView({ milestones }: TimelineGameViewProps) 
               </button>
             ))}
             {pool.length === 0 && (
-              <p className="font-serif text-sm text-muted-foreground">
+              <p className="font-body text-sm text-muted-foreground">
                 Đã xếp hết. Bấm “Kiểm tra” để chấm điểm.
               </p>
             )}
@@ -252,7 +252,7 @@ export default function TimelineGameView({ milestones }: TimelineGameViewProps) 
               ĐÚNG {score}/{truth.length}
             </span>
             {perfect ? (
-              <span className="font-serif text-success">Chính xác tuyệt đối. Bạn nhận huy hiệu Sử gia lưu trữ.</span>
+              <span className="font-body text-success">Chính xác tuyệt đối. Bạn nhận huy hiệu Sử gia lưu trữ.</span>
             ) : (
               <AppButton variant="primary" size="md" onClick={retryWrong}>
                 XẾP LẠI CÁC THẺ SAI

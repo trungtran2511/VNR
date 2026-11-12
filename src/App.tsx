@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] = [
-  { mode: "read", label: "ĐỌC GIÁO TRÌNH", icon: BookOpen },
+  { mode: "read", label: "ĐỌC TÓM LƯỢC", icon: BookOpen },
   { mode: "flashcards", label: "FLASHCARDS", icon: Layers },
   { mode: "timelineGame", label: "XẾP MỐC SỬ", icon: GripVertical },
   { mode: "mockExam", label: "THI THỬ", icon: Timer }
@@ -98,7 +98,7 @@ export default function App() {
       <svg
         aria-hidden="true"
         className="fixed inset-0 w-full h-full pointer-events-none z-40"
-        style={{ mixBlendMode: "multiply", opacity: 0.45 }}
+        style={{ mixBlendMode: "multiply", opacity: 0.1 }}
       >
         <filter id="reader-paper-grain">
           <feTurbulence
@@ -210,6 +210,26 @@ export default function App() {
           </AppLink>
         </div>
       </header>
+
+      <div className="xl:hidden flex-shrink-0 border-b border-border bg-card/80 px-4 py-2 z-30">
+        <label className="flex items-center gap-3 text-xs text-muted-foreground">
+          <span className="shrink-0">Đang xem</span>
+          <select
+            aria-label="Chọn chương hoặc chuyên mục"
+            value={activeReadingBook.category === "chapter" ? activeReadingBook.chapterId : activeReadingBook.category}
+            onChange={(event) => {
+              const book = BOOKS_COLLECTION.find((item) => item.category === "chapter" ? item.chapterId === event.target.value : item.category === event.target.value);
+              if (book) setActiveReadingBook(book);
+            }}
+            className="min-w-0 flex-1 rounded-md border border-border bg-card px-3 py-2 text-foreground focus-visible:outline-primary"
+          >
+            {CHAPTERS_DATA.map((chapter) => <option key={chapter.id} value={chapter.id}>{chapter.code} — {chapter.title}</option>)}
+            <option value="timeline">Biên niên sử</option>
+            <option value="compare">Đối chiếu văn kiện</option>
+            <option value="quiz">Trắc nghiệm</option>
+          </select>
+        </label>
+      </div>
 
       {/* Study Mode Bar: Đọc / Flashcards / Kéo thả / Thi thử */}
       <div className="h-[var(--control-h-lg)] border-b border-border bg-card/60 px-4 md:px-9 flex items-center gap-3 overflow-x-auto flex-shrink-0 z-30">

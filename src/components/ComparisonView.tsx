@@ -18,13 +18,13 @@ export default function ComparisonView({ comparisons }: ComparisonViewProps) {
         </div>
 
         <h1
-          className="font-semibold text-primary tracking-[-0.025em] leading-[1.08]"
+          className="font-display font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
           style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
         >
           Đối Chiếu Cương Lĩnh & Luận Cương 1930
         </h1>
 
-        <p className="font-serif italic text-base text-muted-foreground">
+        <p className="font-body text-base text-muted-foreground">
           Bảng phân tích đối sánh khoa học giữa hai văn kiện nền tảng đầu tiên của Đảng Cộng sản Việt Nam.
         </p>
       </header>
@@ -60,10 +60,10 @@ export default function ComparisonView({ comparisons }: ComparisonViewProps) {
                     <div className="md:col-span-3 p-3.5 lbl text-foreground border-b md:border-b-0 md:border-r border-border bg-muted/30">
                       {asp.criteria}
                     </div>
-                    <div className="md:col-span-4 p-3.5 font-serif text-[15.5px] text-foreground border-b md:border-b-0 md:border-r border-border leading-relaxed">
+                    <div className="md:col-span-4 p-3.5 font-body text-[15.5px] text-foreground border-b md:border-b-0 md:border-r border-border leading-relaxed">
                       {asp.docA.content || "—"}
                     </div>
-                    <div className="md:col-span-5 p-3.5 font-serif text-[15.5px] text-foreground leading-relaxed">
+                    <div className="md:col-span-5 p-3.5 font-body text-[15.5px] text-foreground leading-relaxed">
                       {asp.docB.content || "—"}
                     </div>
                   </div>
@@ -77,7 +77,7 @@ export default function ComparisonView({ comparisons }: ComparisonViewProps) {
                 <Layers className="size-3.5 text-primary" strokeWidth={1.5} />
                 <span>NHẬN ĐỊNH KHOA HỌC LỊCH SỬ</span>
               </div>
-              <p className="font-serif text-[16px] text-foreground leading-relaxed">
+              <p className="font-body text-[16px] text-foreground leading-relaxed">
                 Cương lĩnh chính trị đầu tiên do Nguyễn Ái Quốc soạn thảo là một cương lĩnh giải phóng dân tộc đúng đắn, sáng tạo, kết hợp nhuần nhuyễn giữa chủ nghĩa Mác - Lênin với thực tiễn cách mạng thuộc địa. Luận cương tháng 10/1930 khẳng định nhiều vấn đề căn bản về chiến lược cách mạng nhưng còn hạn chế khi chưa đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.
               </p>
             </div>
