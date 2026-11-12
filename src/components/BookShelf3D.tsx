@@ -1,4 +1,6 @@
 import examArtwork from "../assets/exam-study.jpg?inline";
+
+const coverArtwork = import.meta.glob<string>("../assets/cover-*.jpg", { query: "?inline", import: "default", eager: true });
 import coverFontCss from "../assets/cover-font.css?raw";
 import { useEffect, useRef, useState, useCallback } from "react";
 import {
@@ -368,6 +370,8 @@ export const BOOKS_COLLECTION: BookItem[] = [
 ];
 
 function renderMotifIllustration(motif: CoverMotif, accent: string, paper: string): string {
+  const art = coverArtwork[`../assets/cover-${motif}.jpg`];
+  if (art) return `<image href="${art}" x="65" y="330" width="344" height="252" preserveAspectRatio="xMidYMid slice"/>`;
   switch (motif) {
     case "method":
       return `
@@ -749,6 +753,22 @@ function smoothstep(x: number): number {
   return c * c * (3 - 2 * c);
 }
 
+function fitCaption(container: HTMLDivElement | null) {
+  if (!container) return;
+  const style = getComputedStyle(container);
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+  for (const span of container.querySelectorAll("span")) {
+    const text = span.textContent || "";
+    const width = ctx.measureText(text).width + (parseFloat(style.letterSpacing) || 0) * text.length;
+    const ratio = Math.min(1, (container.clientWidth - 8) / Math.max(1, width));
+    span.style.fontSize = `${parseFloat(style.fontSize) * ratio}px`;
+    span.style.letterSpacing = `${(parseFloat(style.letterSpacing) || 0) * ratio}px`;
+  }
+}
+
 interface BookShelf3DProps {
   onOpenBook: (book: BookItem) => void;
   onQuickNavigateCategory?: (category: "chapter" | "timeline" | "compare" | "quiz") => void;
@@ -856,11 +876,21 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
 
     if (playRingRef.current) {
       const W = window.innerWidth;
-      const cyRatio = window.innerWidth <= 767 ? 0.43 : 0.41;
+      const cyRatio = window.innerWidth <= 767 ? 0.39 : 0.38;
       const shelfCentre = window.innerHeight * cyRatio;
       playRingRef.current.style.left = `${(W / 2 - d / 2 - 27).toFixed(1)}px`;
       playRingRef.current.style.top = `${(shelfCentre + H * 0.36 - 21).toFixed(1)}px`;
     }
+  }, []);
+
+  useEffect(() => {
+    const captions = [capTitleRef.current, capSubRef.current, capYearRef.current];
+    const fit = () => captions.forEach(fitCaption);
+    const observer = new ResizeObserver(fit);
+    captions.forEach(el => { if (el) observer.observe(el); });
+    void document.fonts.ready.then(fit);
+    fit();
+    return () => observer.disconnect();
   }, []);
 
   // Mask slide swap for caption lines using Web Animations API
@@ -873,6 +903,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         const span = document.createElement("span");
         span.textContent = newText;
         container.appendChild(span);
+        fitCaption(container);
         return;
       }
 
@@ -880,6 +911,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
       const nextSpan = document.createElement("span");
       nextSpan.textContent = newText;
       container.appendChild(nextSpan);
+      fitCaption(container);
 
       const travelDir = dir >= 0 ? 1 : -1;
 
@@ -1158,7 +1190,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
       // 4. Cover tilt towards pointer
       const W = window.innerWidth;
       const HScreen = window.innerHeight;
-      const shelfCy = HScreen * (W <= 767 ? 0.43 : 0.41);
+      const shelfCy = HScreen * (W <= 767 ? 0.39 : 0.38);
       const settled = Math.abs(m.T - m.s) < 0.3;
       const onCover =
         !isDetailOpenRef.current &&
@@ -1705,6 +1737,8 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
                 }
               }}
             >
+              <div className="tape-edge tape-top" style={{ backgroundColor: book.themePaper }} />
+              <div className="tape-edge tape-bottom" style={{ backgroundColor: book.themePaper }} />
               {/* Spine face (.sp) */}
               <div
                 ref={(el) => {

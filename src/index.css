@@ -421,3 +421,11 @@
 @keyframes mist-drift { from { transform: translate(-3%, 1%); opacity: .5; } to { transform: translate(3%, -1%); opacity: .85; } }
 @media (prefers-reduced-motion: reduce) { .living-landscape, .living-mist { animation: none; } }
 @media (max-height: 700px) and (min-width: 768px) { :root { --H: min(49vh, 39.6vw); --cy: 38%; } }
+
+/* Keep each caption on one measured line, including the longest Vietnamese titles. */
+.caption-mask { white-space: nowrap; height: 1.4em; line-height: 1.4; flex-shrink: 0; }
+.shelf-caption-title { width: min(76vw, 680px); padding-block: 0; }
+.shelf-caption-meta { width: min(84vw, 760px); }
+.tape-edge { position: absolute; width: var(--ws); height: var(--d); left: calc(var(--ws) / -2); top: calc(var(--d) / -2); backface-visibility: hidden; background-image: repeating-linear-gradient(90deg, #0002 0px, #0002 1px, transparent 1px, transparent 3px); }
+.tape-top { transform: rotateX(90deg) translateZ(calc(var(--H) / 2)); }
+.tape-bottom { transform: rotateX(-90deg) translateZ(calc(var(--H) / 2)); }
