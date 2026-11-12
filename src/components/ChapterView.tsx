@@ -16,6 +16,17 @@ export default function ChapterView({ chapter, focusSectionId }: ChapterViewProp
     setReadSections((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const els = document.querySelectorAll<HTMLElement>(".reader-section");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+      { threshold: 0.08 }
+    );
+    els.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
+    return () => io.disconnect();
+  }, [chapter.id]);
+
+  useEffect(() => {
     if (!focusSectionId) return;
     const t = window.setTimeout(
       () => document.getElementById(`section-${focusSectionId}`)?.scrollIntoView({ behavior: "smooth", block: "start" }),

@@ -187,7 +187,7 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
               className="block h-[min(48vh,420px)] min-h-[230px] w-full max-w-4xl [perspective:1400px] cursor-pointer rounded-[var(--radius-surface)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
               <div
-                className="relative h-full w-full transition-transform duration-[400ms] motion-reduce:transition-none [transform-style:preserve-3d]"
+                className="relative h-full w-full transition-transform duration-[500ms] ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none [transform-style:preserve-3d]"
                 style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
               >
                 <div className={`${FACE} items-center justify-center text-center`}>

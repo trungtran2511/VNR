@@ -57,7 +57,12 @@ export default function TimelineView({ milestones, onOpenChapter }: TimelineView
       </header>
 
       {/* Trục thời gian: bấm một mốc để nhảy tới nội dung */}
-      <div className="tl-track" role="list" aria-label="Trục thời gian các mốc sử">
+      <div
+        className="tl-track"
+        role="list"
+        aria-label="Trục thời gian các mốc sử"
+        style={{ "--fill": `${(Math.max(0, filtered.findIndex((m) => m.id === activeId)) + 0.5) * 5.5}rem`, "--fill-on": activeId ? 1 : 0 } as React.CSSProperties}
+      >
         {filtered.map((item) => (
           <button
             key={item.id}
@@ -80,7 +85,7 @@ export default function TimelineView({ milestones, onOpenChapter }: TimelineView
           <article
             key={item.id}
             id={`ms-${item.id}`}
-            className={`py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-muted/40 transition-colors px-2 ${activeId === item.id ? "bg-muted/60" : ""}`}
+            className={`py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:bg-muted/40 transition-colors px-2 ${activeId === item.id ? "bg-muted/60 tl-enter" : ""}`}
           >
             <div className="md:col-span-3 space-y-1.5">
               <div className="flex items-center gap-2 text-primary">

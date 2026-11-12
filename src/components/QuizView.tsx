@@ -37,6 +37,18 @@ export default function QuizView({ chapters }: QuizViewProps) {
   }, 0);
 
   const pct = Math.round((score / total) * 100);
+  const [shownPct, setShownPct] = useState(0);
+  useEffect(() => {
+    if (!isSubmitted) { setShownPct(0); return; }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setShownPct(pct); return; }
+    const start = performance.now();
+    let raf = requestAnimationFrame(function tick(now) {
+      const t = Math.min(1, (now - start) / 900);
+      setShownPct(Math.round(pct * (1 - Math.pow(1 - t, 3))));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [isSubmitted, pct]);
   useEffect(() => {
     if (isSubmitted) setBest((b) => Math.max(b, pct));
   }, [isSubmitted, pct, setBest]);
@@ -219,7 +231,8 @@ export default function QuizView({ chapters }: QuizViewProps) {
 
       {isSubmitted && (
         <div className="p-5 border border-primary bg-accent flex items-center justify-between">
-          <div className="space-y-1">
+          <div className="score-ring" style={{ "--p": shownPct } as React.CSSProperties}><span>{shownPct}%</span></div>
+          <div className="space-y-1 flex-1 px-5">
             <div className="lbl text-primary">KẾT QUẢ TỔNG KẾT</div>
             <div className="font-body text-lg text-foreground">
               Đạt <strong>{score}</strong> / {total} câu đúng (

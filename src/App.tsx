@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import BookShelf3D, { BOOKS_COLLECTION, type BookItem } from "./components/BookShelf3D";
 import ChapterView from "./components/ChapterView";
 import TimelineView from "./components/TimelineView";
@@ -50,7 +50,14 @@ const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] =
 export default function App() {
   const [activeReadingBook, setActiveBook] = useState<BookItem | null>(null);
   const [studyMode, setStudyMode] = useState<StudyMode>("read");
+  const [openingCover, setOpeningCover] = useState<BookItem | null>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
   const [focusSection, setFocusSection] = useState<string | null>(null);
+  const mainRef = useRef<HTMLElement>(null);
+  const viewKey = `${studyMode}-${activeReadingBook?.id ?? ""}`;
+  useEffect(() => {
+    if (!focusSection) mainRef.current?.scrollTo({ top: 0 });
+  }, [viewKey, focusSection]);
   const setActiveReadingBook = (book: BookItem | null, focus: string | null = null) => {
     setStudyMode("read");
     setFocusSection(focus);
@@ -100,7 +107,14 @@ export default function App() {
 
   // When on the 3D Curved VHS Archive hero, render full-screen without extra chrome
   if (!activeReadingBook) {
-    return <BookShelf3D onOpenBook={(book) => setActiveReadingBook(book, BOOK_FOCUS[book.id] ?? null)} />;
+    return (
+      <BookShelf3D
+        onOpenBook={(book) => {
+          setOpeningCover(book);
+          setActiveReadingBook(book, BOOK_FOCUS[book.id] ?? null);
+        }}
+      />
+    );
   }
 
   return (
@@ -130,6 +144,18 @@ export default function App() {
         </filter>
         <rect width="100%" height="100%" filter="url(#reader-paper-grain)" />
       </svg>
+
+      {/* Bìa sách lật mở khi vào trang đọc */}
+      {openingCover && (
+        <div
+          aria-hidden="true"
+          className="book-open-cover"
+          style={{ background: `linear-gradient(90deg, ${openingCover.themeBgDark}, ${openingCover.themeBg})`, color: openingCover.themePaper }}
+          onAnimationEnd={() => setOpeningCover(null)}
+        >
+          <span className="font-display text-3xl md:text-5xl font-semibold px-8 text-center">{openingCover.title}</span>
+        </div>
+      )}
 
       {/* Editorial Catalogue Top Bar */}
       <header className="h-[68px] border-b border-border bg-card px-3 md:px-5 flex items-center justify-between gap-3 flex-shrink-0 z-30">
@@ -227,6 +253,8 @@ export default function App() {
         </div>
       </header>
 
+      <div className="reading-progress" aria-hidden="true"><div ref={progressRef} /></div>
+
       <div className="xl:hidden flex-shrink-0 border-b border-border bg-card/80 px-4 py-2 z-30">
         <label className="flex items-center gap-3 text-xs text-muted-foreground">
           <span className="shrink-0">Đang xem</span>
@@ -267,12 +295,19 @@ export default function App() {
 
       {/* Nội dung học: Flashcards chiếm trọn vùng còn lại, không cuộn trang */}
       <main
+        ref={mainRef}
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          const max = el.scrollHeight - el.clientHeight;
+          if (progressRef.current) progressRef.current.style.transform = `scaleX(${max > 0 ? el.scrollTop / max : 0})`;
+        }}
         className={
           studyMode === "flashcards"
             ? "flex-1 min-h-0 overflow-hidden p-2 md:p-4 z-20"
             : "flex-1 overflow-y-auto px-4 md:px-10 py-8 md:py-12 z-20"
         }
       >
+        <div key={`${studyMode}-${activeReadingBook.id}`} className="view-enter h-full">
         {studyMode === "flashcards" && (
           <FlashcardsView chapters={CHAPTERS_DATA} milestones={MILESTONES_DATA} />
         )}
@@ -303,6 +338,7 @@ export default function App() {
         {studyMode === "read" && activeReadingBook.category === "quiz" && (
           <QuizView chapters={CHAPTERS_DATA} />
         )}
+        </div>
       </main>
     </div>
   );
