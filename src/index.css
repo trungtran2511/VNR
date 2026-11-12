@@ -495,3 +495,49 @@ button:not(:disabled):active { transform: scale(.985); }
 .match-card.is-done { opacity: .45; pointer-events: none; }
 .match-card.is-done .match-card-back { border-color: var(--primary); }
 @media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .match-card-inner { transition: none; } }
+
+/* Sơ đồ tư duy */
+.mm-scroll { overflow: auto; border-top: 1px solid var(--border); padding: 2rem 0; }
+.mm-canvas { transform-origin: top left; width: max-content; transition: transform 150ms ease-out; }
+.mm-branch { display: flex; align-items: center; }
+.mm-node-wrap { flex: 0 0 auto; }
+.mm-node { display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; text-align: left; max-width: 15rem; padding: .55rem .8rem; border: 1px solid var(--border); border-radius: var(--radius-surface, 6px); background: var(--card); color: var(--foreground); font-size: 13px; line-height: 1.4; cursor: pointer; transition: border-color 150ms ease-out; }
+.mm-node:hover { border-color: var(--primary); }
+.mm-depth-0 { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+.mm-depth-1 { border-color: var(--primary); }
+.mm-note { font-size: 11.5px; color: var(--muted-foreground); }
+.mm-depth-0 .mm-note { color: inherit; opacity: .85; }
+.mm-count { font-size: 11px; color: var(--primary); }
+.mm-children { display: flex; flex-direction: column; gap: .75rem; margin-left: 2.25rem; padding-left: 1.25rem; border-left: 1px solid var(--border); position: relative; }
+.mm-children > .mm-branch { position: relative; }
+.mm-children > .mm-branch::before { content: ""; position: absolute; left: -1.25rem; top: 50%; width: 1.25rem; height: 1px; background: var(--border); }
+/* Ô chữ */
+.cw-grid { display: grid; gap: 4px; width: max-content; }
+.cw-row { display: flex; align-items: center; gap: 4px; padding: 2px 4px; cursor: pointer; border-left: 2px solid transparent; }
+.cw-row.is-active { border-left-color: var(--primary); background: color-mix(in srgb, var(--primary) 6%, transparent); }
+.cw-num { width: 1.4rem; text-align: right; color: var(--muted-foreground); }
+.cw-cell { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); background: var(--card); font-size: 14px; font-weight: 600; color: var(--foreground); }
+.cw-empty { border: 0; background: transparent; }
+.cw-key { background: color-mix(in srgb, var(--primary) 14%, var(--card)); border-color: var(--primary); }
+.cw-solved { color: var(--primary); }
+.map-pin { cursor: pointer; }
+.map-pin:focus-visible circle { stroke-width: 3; }
+.map-pin circle { transition: r 150ms ease-out, fill 150ms ease-out; }
+/* Cẩm nang */
+.cheat-sheet { font-size: 12px; line-height: 1.4; }
+.cheat-title { font-family: var(--font-display, serif); font-size: 18px; font-weight: 600; margin: 1rem 0 .4rem; color: var(--primary); }
+.cheat-sheet table { width: 100%; border-collapse: collapse; }
+.cheat-sheet th, .cheat-sheet td { text-align: left; vertical-align: top; padding: 3px 6px; border-bottom: 1px solid var(--border); }
+.cheat-sheet th { font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); }
+.cheat-foot { margin-top: .6rem; font-size: 10.5px; color: var(--muted-foreground); }
+@media print {
+  @page { size: A4; margin: 10mm; }
+  .app-shell { height: auto !important; width: auto !important; overflow: visible !important; display: block !important; }
+  .app-shell > *:not(main) { display: none !important; }
+  .app-shell main { overflow: visible !important; padding: 0 !important; }
+  .no-print { display: none !important; }
+  .cheat-sheet { font-size: 7.5pt; line-height: 1.25; color: #000; }
+  .cheat-sheet th, .cheat-sheet td { padding: 1px 4px; }
+  .cheat-title { font-size: 10pt; margin: 6px 0 3px; }
+  .view-enter { animation: none !important; }
+}

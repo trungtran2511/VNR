@@ -8,6 +8,12 @@ import FlashcardsView from "./components/FlashcardsView";
 import TimelineGameView from "./components/TimelineGameView";
 import MockExamView from "./components/MockExamView";
 import EventLessonView from "./components/EventLessonView";
+import MapView from "./components/MapView";
+import MindmapView from "./components/MindmapView";
+import CongressView from "./components/CongressView";
+import CrosswordView from "./components/CrosswordView";
+import CheatSheetView from "./components/CheatSheetView";
+import AiAssistant from "./components/AiAssistant";
 import MatchGameView from "./components/MatchGameView";
 import GuessGameView from "./components/GuessGameView";
 import { EVENT_LESSONS } from "./lib/eventLessons";
@@ -34,6 +40,11 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
+  MapPin,
+  Network,
+  Landmark,
+  Grid3x3,
+  Printer,
   Timer,
   Sparkles
 } from "lucide-react";
@@ -51,11 +62,21 @@ const BOOK_FOCUS: Record<string, string> = {
   ch3: "ch3-2"
 };
 
-const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] = [
+type ModeDef = { mode: StudyMode; label: string; icon: typeof BookOpen };
+
+const TOOL_MODES: ModeDef[] = [
+  { mode: "map", label: "BẢN ĐỒ", icon: MapPin },
+  { mode: "mindmap", label: "SƠ ĐỒ TƯ DUY", icon: Network },
+  { mode: "congress", label: "ĐẠI HỘI", icon: Landmark },
+  { mode: "cheatsheet", label: "CẨM NANG", icon: Printer }
+];
+
+const PLAY_MODES: ModeDef[] = [
   { mode: "flashcards", label: "FLASHCARDS", icon: Layers },
   { mode: "timelineGame", label: "XẾP MỐC SỬ", icon: GripVertical },
   { mode: "match", label: "GHÉP CẶP", icon: Puzzle },
   { mode: "guess", label: "ĐOÁN SỰ KIỆN", icon: Search },
+  { mode: "crossword", label: "Ô CHỮ", icon: Grid3x3 },
   { mode: "mockExam", label: "THI THỬ", icon: Timer }
 ];
 
@@ -149,17 +170,20 @@ export default function App() {
   // When on the 3D Curved VHS Archive hero, render full-screen without extra chrome
   if (!activeReadingBook) {
     return (
-      <BookShelf3D
-        onOpenBook={(book) => {
-          setOpeningCover(book);
-          setActiveReadingBook(book, BOOK_FOCUS[book.id] ?? null);
-        }}
-      />
+      <>
+        <BookShelf3D
+          onOpenBook={(book) => {
+            setOpeningCover(book);
+            setActiveReadingBook(book, BOOK_FOCUS[book.id] ?? null);
+          }}
+        />
+        <AiAssistant />
+      </>
     );
   }
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden flex flex-col bg-background text-foreground antialiased select-text">
+    <div className="app-shell relative h-screen w-screen overflow-hidden flex flex-col bg-background text-foreground antialiased select-text">
       {/* Background Lưới (Grid) chung theo ảnh mẫu & Quầng sáng ánh nâu ấm trầm đồng bộ Dashboard */}
       <div aria-hidden="true" className="screen-archive-grid-bg" />
       <div aria-hidden="true" className="screen-archive-vintage-tint" />
@@ -330,30 +354,35 @@ export default function App() {
 
       {/* Study Mode Bar: Đọc / Flashcards / Kéo thả / Thi thử */}
       <div className="h-[var(--control-h-lg)] border-b border-border bg-card/60 px-4 md:px-9 flex items-center gap-3 overflow-x-auto flex-shrink-0 z-30">
-        <span className="lbl text-muted-foreground hidden md:inline">CHẾ ĐỘ HỌC</span>
-        <SegmentedControl
-          ariaLabel="Chọn chế độ học"
-          items={[
+        <span className="lbl text-muted-foreground hidden xl:inline">HỌC</span>
+        {(() => {
+          const toItems = (defs: ModeDef[]) =>
+            defs.map((m) => {
+              const Icon = m.icon;
+              return {
+                key: m.mode,
+                label: m.label,
+                icon: <Icon className="size-3" strokeWidth={1.5} />,
+                active: studyMode === m.mode,
+                onSelect: () => setStudyMode(m.mode)
+              };
+            });
+          const learn: ModeDef[] = [
             ...(EVENT_LESSONS[activeReadingBook.id]
               ? [{ mode: "lesson" as StudyMode, label: "BÀI CHI TIẾT", icon: ScrollText }]
               : []),
-            {
-              mode: "read" as StudyMode,
-              label: activeReadingBook.category === "chapter" ? "TÓM LƯỢC CHƯƠNG" : "ĐỌC",
-              icon: BookOpen
-            },
-            ...STUDY_MODES
-          ].map((m) => {
-            const Icon = m.icon;
-            return {
-              key: m.mode,
-              label: m.label,
-              icon: <Icon className="size-3" strokeWidth={1.5} />,
-              active: studyMode === m.mode,
-              onSelect: () => setStudyMode(m.mode)
-            };
-          })}
-        />
+            { mode: "read" as StudyMode, label: activeReadingBook.category === "chapter" ? "TÓM LƯỢC CHƯƠNG" : "ĐỌC", icon: BookOpen }
+          ];
+          return (
+            <>
+              <SegmentedControl ariaLabel="Học" items={toItems(learn)} className="shrink-0" />
+              <span className="lbl text-muted-foreground hidden lg:inline">TRA CỨU</span>
+              <SegmentedControl ariaLabel="Tra cứu" items={toItems(TOOL_MODES)} className="shrink-0" />
+              <span className="lbl text-muted-foreground hidden lg:inline">CHƠI</span>
+              <SegmentedControl ariaLabel="Chơi và luyện tập" items={toItems(PLAY_MODES)} className="shrink-0" />
+            </>
+          );
+        })()}
 
         <div className="ml-auto flex items-center gap-1 shrink-0">
           <AppButton
@@ -419,6 +448,16 @@ export default function App() {
           />
         )}
 
+        {studyMode === "map" && <MapView />}
+
+        {studyMode === "mindmap" && <MindmapView />}
+
+        {studyMode === "congress" && <CongressView />}
+
+        {studyMode === "crossword" && <CrosswordView />}
+
+        {studyMode === "cheatsheet" && <CheatSheetView milestones={MILESTONES_DATA} />}
+
         {studyMode === "match" && <MatchGameView milestones={MILESTONES_DATA} />}
 
         {studyMode === "guess" && <GuessGameView milestones={MILESTONES_DATA} />}
@@ -451,6 +490,7 @@ export default function App() {
         )}
         </div>
       </main>
+      <AiAssistant />
     </div>
   );
 }

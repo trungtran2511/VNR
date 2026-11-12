@@ -58,7 +58,15 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
     return c;
   }, [scoped, progress]);
 
-  const current = queue[0];
+  const [offset, setOffset] = useState(0);
+  const current = queue.length ? queue[((offset % queue.length) + queue.length) % queue.length] : undefined;
+  const go = useCallback(
+    (delta: number) => {
+      setFlippedId(null);
+      setOffset((o) => o + delta);
+    },
+    []
+  );
   const flipped = current !== undefined && flippedId === current.id;
 
   const flip = useCallback(() => {
@@ -82,7 +90,9 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
     const onKeyDown = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement).tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
-      if (e.key === "1") rate("hard");
+      if (e.key === "ArrowLeft") go(-1);
+      else if (e.key === "ArrowRight") go(1);
+      else if (e.key === "1") rate("hard");
       else if (e.key === "2") rate("review");
       else if (e.key === "3") rate("known");
       else if ((e.key === " " || e.key === "Enter") && tag !== "BUTTON") {
@@ -92,7 +102,7 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [flip, rate]);
+  }, [flip, rate, go]);
 
   return (
     <div className="flex h-full min-h-0 w-full gap-3 md:gap-4">
@@ -216,9 +226,11 @@ export default function FlashcardsView({ chapters, milestones }: FlashcardsViewP
             </button>
 
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+              <AppButton variant="outline" size="sm" aria-label="Thẻ trước (phím ←)" title="Thẻ trước (←)" onClick={() => go(-1)} icon={<ChevronLeft className="size-3.5" strokeWidth={1.5} />} />
               <AppButton variant="outline" size="sm" disabled={!flipped} onClick={() => rate("hard")}>1 · KHÓ</AppButton>
               <AppButton variant="outline" size="sm" disabled={!flipped} onClick={() => rate("review")}>2 · CẦN ÔN</AppButton>
               <AppButton variant="primary" size="sm" disabled={!flipped} onClick={() => rate("known")}>3 · ĐÃ NHỚ</AppButton>
+              <AppButton variant="outline" size="sm" aria-label="Thẻ kế (phím →)" title="Thẻ kế (→)" onClick={() => go(1)} icon={<ChevronRight className="size-3.5" strokeWidth={1.5} />} />
             </div>
           </>
         ) : (
