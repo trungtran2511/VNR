@@ -463,4 +463,5 @@
 .score-ring { width: 68px; height: 68px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--border) 0); position: relative; }
 .score-ring::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--accent); }
 .score-ring span { position: relative; font-size: 14px; font-weight: 600; color: var(--primary); }
-@media (prefers-reduced-motion: reduce) { .view-enter, .tl-enter { animation: none; } .reveal { opacity: 1; transform: none; transition: none; } .book-open-cover { display: none; } }
+@media (prefers-reduced-motion: reduce) { .view-enter, .tl-enter { animation: none; } .reveal { opacity: 1; transform: none; transition: none; } .book-open-cover { animation: cover-fade 500ms ease-out forwards; } }
+@keyframes cover-fade { 0%, 40% { opacity: 1; } 100% { opacity: 0; } }
