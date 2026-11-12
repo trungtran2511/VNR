@@ -7,6 +7,10 @@ import QuizView from "./components/QuizView";
 import FlashcardsView from "./components/FlashcardsView";
 import TimelineGameView from "./components/TimelineGameView";
 import MockExamView from "./components/MockExamView";
+import EventLessonView from "./components/EventLessonView";
+import MatchGameView from "./components/MatchGameView";
+import GuessGameView from "./components/GuessGameView";
+import { EVENT_LESSONS } from "./lib/eventLessons";
 import { AppButton, AppLink } from "./components/ui/app-button";
 import { SegmentedControl } from "./components/ui/segmented-control";
 import { SearchField } from "./components/ui/search-field";
@@ -25,6 +29,11 @@ import {
   Layers,
   FileCheck2,
   GripVertical,
+  ScrollText,
+  Puzzle,
+  Search,
+  ChevronLeft,
+  ChevronRight,
   Timer,
   Sparkles
 } from "lucide-react";
@@ -43,9 +52,10 @@ const BOOK_FOCUS: Record<string, string> = {
 };
 
 const STUDY_MODES: { mode: StudyMode; label: string; icon: typeof BookOpen }[] = [
-  { mode: "read", label: "ĐỌC TÓM LƯỢC", icon: BookOpen },
   { mode: "flashcards", label: "FLASHCARDS", icon: Layers },
   { mode: "timelineGame", label: "XẾP MỐC SỬ", icon: GripVertical },
+  { mode: "match", label: "GHÉP CẶP", icon: Puzzle },
+  { mode: "guess", label: "ĐOÁN SỰ KIỆN", icon: Search },
   { mode: "mockExam", label: "THI THỬ", icon: Timer }
 ];
 
@@ -65,7 +75,7 @@ export default function App() {
     if (!focusSection) mainRef.current?.scrollTo({ top: 0 });
   }, [viewKey, focusSection]);
   const setActiveReadingBook = (book: BookItem | null, focus: string | null = null) => {
-    setStudyMode("read");
+    setStudyMode(book && EVENT_LESSONS[book.id] ? "lesson" : "read");
     setFocusSection(focus);
     setActiveBook(book);
   };
@@ -104,6 +114,31 @@ export default function App() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activeReadingBook]);
+
+  const bookIndex = activeReadingBook
+    ? BOOKS_COLLECTION.findIndex((b) => b.id === activeReadingBook.id)
+    : -1;
+  const goBook = (delta: number) => {
+    if (bookIndex < 0) return;
+    const n = BOOKS_COLLECTION.length;
+    setActiveReadingBook(BOOKS_COLLECTION[(bookIndex + delta + n) % n]);
+  };
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    const onArrow = (e: KeyboardEvent) => {
+      if (bookIndex < 0 || (studyMode !== "lesson" && studyMode !== "read")) return;
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      const n = BOOKS_COLLECTION.length;
+      const delta = e.key === "ArrowRight" ? 1 : -1;
+      setActiveReadingBook(BOOKS_COLLECTION[(bookIndex + delta + n) % n]);
+    };
+    window.addEventListener("keydown", onArrow);
+    return () => window.removeEventListener("keydown", onArrow);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookIndex, studyMode]);
 
   const currentChapter =
     activeReadingBook && activeReadingBook.category === "chapter"
@@ -298,7 +333,17 @@ export default function App() {
         <span className="lbl text-muted-foreground hidden md:inline">CHẾ ĐỘ HỌC</span>
         <SegmentedControl
           ariaLabel="Chọn chế độ học"
-          items={STUDY_MODES.map((m) => {
+          items={[
+            ...(EVENT_LESSONS[activeReadingBook.id]
+              ? [{ mode: "lesson" as StudyMode, label: "BÀI CHI TIẾT", icon: ScrollText }]
+              : []),
+            {
+              mode: "read" as StudyMode,
+              label: activeReadingBook.category === "chapter" ? "TÓM LƯỢC CHƯƠNG" : "ĐỌC",
+              icon: BookOpen
+            },
+            ...STUDY_MODES
+          ].map((m) => {
             const Icon = m.icon;
             return {
               key: m.mode,
@@ -309,11 +354,44 @@ export default function App() {
             };
           })}
         />
+
+        <div className="ml-auto flex items-center gap-1 shrink-0">
+          <AppButton
+            variant="outline"
+            size="xs"
+            onClick={() => goBook(-1)}
+            title="Cuốn trước (phím ←)"
+            aria-label="Cuốn trước"
+            icon={<ChevronLeft className="size-3" strokeWidth={1.5} />}
+          />
+          <span className="lbl text-muted-foreground px-1.5 tabular-nums">
+            {bookIndex + 1}/{BOOKS_COLLECTION.length}
+          </span>
+          <AppButton
+            variant="outline"
+            size="xs"
+            onClick={() => goBook(1)}
+            title="Cuốn kế (phím →)"
+            aria-label="Cuốn kế"
+            icon={<ChevronRight className="size-3" strokeWidth={1.5} />}
+          />
+        </div>
       </div>
 
       {/* Nội dung học: Flashcards chiếm trọn vùng còn lại, không cuộn trang */}
       <main
         ref={mainRef}
+        onTouchStart={(e) => {
+          touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }}
+        onTouchEnd={(e) => {
+          const s0 = touchStart.current;
+          touchStart.current = null;
+          if (!s0 || (studyMode !== "lesson" && studyMode !== "read")) return;
+          const dx = e.changedTouches[0].clientX - s0.x;
+          const dy = e.changedTouches[0].clientY - s0.y;
+          if (Math.abs(dx) > 90 && Math.abs(dy) < 60) goBook(dx < 0 ? 1 : -1);
+        }}
         onScroll={(e) => {
           const el = e.currentTarget;
           const max = el.scrollHeight - el.clientHeight;
@@ -329,6 +407,21 @@ export default function App() {
         {studyMode === "flashcards" && (
           <FlashcardsView chapters={CHAPTERS_DATA} milestones={MILESTONES_DATA} />
         )}
+
+        {studyMode === "lesson" && EVENT_LESSONS[activeReadingBook.id] && (
+          <EventLessonView
+            lesson={EVENT_LESSONS[activeReadingBook.id]}
+            bookTitle={activeReadingBook.title}
+            onOpenSummary={() => {
+              setFocusSection(EVENT_LESSONS[activeReadingBook.id].sectionId ?? null);
+              setStudyMode("read");
+            }}
+          />
+        )}
+
+        {studyMode === "match" && <MatchGameView milestones={MILESTONES_DATA} />}
+
+        {studyMode === "guess" && <GuessGameView milestones={MILESTONES_DATA} />}
 
         {studyMode === "timelineGame" && <TimelineGameView milestones={MILESTONES_DATA} />}
 

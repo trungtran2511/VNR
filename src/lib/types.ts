@@ -49,4 +49,4 @@ export interface DocumentComparison {
   }[];
 }
 
-export type StudyMode = "read" | "flashcards" | "timelineGame" | "mockExam";
+export type StudyMode = "lesson" | "read" | "flashcards" | "timelineGame" | "match" | "guess" | "mockExam";

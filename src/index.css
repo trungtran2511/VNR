@@ -480,3 +480,18 @@ button:not(:disabled):active { transform: scale(.985); }
 .chapter-guide a:hover { transform: translateX(3px); }
 .tl-dot:hover::before { transform: scale(1.2); }
 @media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .reveal.in li { animation: none; } :root:not([data-motion="full"]) .reveal.in > div:first-child::after { transition: none; } }
+
+/* Diễn biến theo trục dọc trong bài học chi tiết */
+.lesson-steps { list-style: none; margin: 0; padding: 0 0 0 1.25rem; border-left: 1px solid var(--border); display: grid; gap: 1.25rem; }
+.lesson-steps li { position: relative; display: grid; gap: .15rem; }
+.lesson-steps li::before { content: ""; position: absolute; left: calc(-1.25rem - 4.5px); top: .35rem; width: 8px; height: 8px; border-radius: 50%; background: var(--background); border: 1.5px solid var(--primary); }
+/* Thẻ lật của trò ghép cặp */
+.match-card { perspective: 800px; height: 92px; border: 0; background: none; padding: 0; cursor: pointer; }
+.match-card-inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 350ms cubic-bezier(.2,.7,.2,1); }
+.match-card.is-up .match-card-inner { transform: rotateY(180deg); }
+.match-card-front, .match-card-back { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: .5rem; border: 1px solid var(--border); border-radius: var(--radius-surface, 6px); backface-visibility: hidden; }
+.match-card-front { background: var(--muted); color: var(--muted-foreground); }
+.match-card-back { background: var(--card); color: var(--foreground); transform: rotateY(180deg); }
+.match-card.is-done { opacity: .45; pointer-events: none; }
+.match-card.is-done .match-card-back { border-color: var(--primary); }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .match-card-inner { transition: none; } }
