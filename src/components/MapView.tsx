@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
-import { MAP_PINS, TRUONG_SON_PATH, VN_OUTLINE } from "../lib/mapData";
+import { ARCHIPELAGOS, ISLAND_DOTS, ISLAND_POLYS, MAP_PINS, TRUONG_SON_PATH, VN_OUTLINE } from "../lib/mapData";
 import { AppButton } from "./ui/app-button";
 
 const covers = import.meta.glob<string>("../assets/cover-*.jpg", { query: "?url", import: "default", eager: true });
 
-const W = 400;
-const H = 580;
-const px = (lon: number) => ((lon - 102) / 8) * W;
-const py = (lat: number) => ((23.6 - lat) / 15.1) * H;
+const S = 40;
+const W = 14 * S;
+const H = (23.6 - 7.2) * S;
+const px = (lon: number) => (lon - 102) * S;
+const py = (lat: number) => (23.6 - lat) * S;
 const toPath = (pts: [number, number][]) => pts.map(([lo, la], i) => `${i ? "L" : "M"}${px(lo).toFixed(1)},${py(la).toFixed(1)}`).join(" ");
 
 /** Bản đồ cách điệu các địa danh gắn với mốc lịch sử; có thuyết minh bằng giọng đọc của trình duyệt. */
@@ -51,9 +52,31 @@ export default function MapView() {
         <p className="text-sm text-muted-foreground">Bản đồ cách điệu, không dùng để đo đạc. Bấm vào một điểm ghim để xem tư liệu.</p>
       </header>
 
-      <div className="grid gap-8 md:grid-cols-[minmax(260px,380px)_1fr]">
-        <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label="Bản đồ Việt Nam cách điệu" className="w-full h-auto max-h-[70vh] justify-self-center">
+      <div className="grid gap-8 md:grid-cols-[minmax(300px,520px)_1fr]">
+        <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label="Bản đồ Việt Nam cách điệu" className="w-full h-auto max-h-[78vh] justify-self-center">
           <path d={`${toPath(VN_OUTLINE)} Z`} fill="var(--muted)" stroke="var(--border)" strokeWidth="1.5" strokeLinejoin="round" />
+          {ISLAND_POLYS.map((poly, i) => (
+            <path key={i} d={`${toPath(poly)} Z`} fill="var(--muted)" stroke="var(--border)" strokeWidth="1.2" strokeLinejoin="round" />
+          ))}
+          {ISLAND_DOTS.map((d) => (
+            <circle key={d.name} cx={px(d.lon)} cy={py(d.lat)} r="2" fill="var(--muted-foreground)">
+              <title>{d.name}</title>
+            </circle>
+          ))}
+          {ARCHIPELAGOS.map((a) => (
+            <g key={a.name}>
+              {a.islets.map(([lo, la], i) => (
+                <circle key={i} cx={px(lo)} cy={py(la)} r="2" fill="var(--primary)" opacity="0.75" />
+              ))}
+              <text x={px(a.labelAt[0])} y={py(a.labelAt[1])} textAnchor="middle" fontSize="9.5" fill="var(--primary)" fontWeight="600">
+                {a.name}
+              </text>
+            </g>
+          ))}
+          <text x={px(112.8)} y={py(13.6)} textAnchor="middle" fontSize="11" letterSpacing="3" fill="var(--muted-foreground)" opacity="0.7">BIỂN ĐÔNG</text>
+          <text x={px(103.2)} y={py(18.2)} textAnchor="middle" fontSize="9" fill="var(--muted-foreground)" opacity="0.7">LÀO</text>
+          <text x={px(105.2)} y={py(12.3)} textAnchor="middle" fontSize="9" fill="var(--muted-foreground)" opacity="0.7">CAMPUCHIA</text>
+          <text x={px(104.7)} y={py(23.5)} textAnchor="middle" fontSize="9" fill="var(--muted-foreground)" opacity="0.7">TRUNG QUỐC</text>
           <path d={toPath(TRUONG_SON_PATH)} fill="none" stroke="var(--primary)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.7" />
           {MAP_PINS.map((p, i) => {
             const on = p.id === selId;
