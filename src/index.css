@@ -36,7 +36,7 @@
   --border-control: color-mix(in srgb, var(--ink) 35%, transparent);
   --border-control-strong: color-mix(in srgb, var(--ink) 80%, transparent);
   --H: min(52vh, 38vw);
-  --cy: 35.5%;
+  --cy: 38.5%;
   /* Semantic UI Tokens mapped to Paper/Cobalt System (UI_DESIGN_RULES.md Section III) */
   --background: var(--paper);
   --foreground: var(--ink);
@@ -63,7 +63,7 @@
 @media (max-width: 767px) {
   :root {
     --H: min(78vw, 44svh);
-    --cy: 36%;
+    --cy: 39%;
   }
 }
 

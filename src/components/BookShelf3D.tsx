@@ -883,7 +883,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
 
     if (playRingRef.current) {
       const W = window.innerWidth;
-      const cyRatio = window.innerWidth <= 767 ? 0.39 : 0.38;
+      const cyRatio = window.innerWidth <= 767 ? 0.39 : 0.385;
       const shelfCentre = window.innerHeight * cyRatio;
       playRingRef.current.style.left = `${(W / 2 - d / 2 - 27).toFixed(1)}px`;
       playRingRef.current.style.top = `${(shelfCentre + H * 0.36 - 21).toFixed(1)}px`;
