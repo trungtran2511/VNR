@@ -1788,14 +1788,14 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
       {/* 6. Caption (Masked sliding lines under the cover) */}
       <div
         aria-live="polite"
-        className="fixed left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2.5 pointer-events-none"
-        style={{ top: "calc(var(--cy) + var(--H) / 2 + 4.2vh)" }}
+        className="fixed left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 md:gap-1.5 pointer-events-none"
+        style={{ top: "calc(var(--cy) + var(--H) / 2 + 1.2vh)" }}
       >
         {/* Editorial display title */}
         <div
           ref={capTitleRef}
-          className="caption-mask shelf-caption-title font-semibold text-primary tracking-[-0.015em] leading-[1.15]"
-          style={{ fontSize: "clamp(30px, 3.6vw, 52px)" }}
+          className="caption-mask shelf-caption-title font-semibold text-primary tracking-[-0.015em] leading-[1.12]"
+          style={{ fontSize: "clamp(26px, 3.2vw, 46px)" }}
         >
           <span>{initialBook.title}</span>
         </div>
@@ -1816,7 +1816,7 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         <div
           ref={capYearRef}
           className="caption-mask shelf-caption-meta font-medium text-muted-foreground"
-          style={{ fontSize: "10.5px", letterSpacing: "0.08em" }}
+          style={{ fontSize: "10px", letterSpacing: "0.08em" }}
         >
           <span>{`${initialBook.period} — ${initialBook.genre}`}</span>
         </div>
@@ -1828,9 +1828,9 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
           motionRef.current.T = Math.round(motionRef.current.T) - 1;
         }}
         aria-label="Tập trước"
-        className="fixed z-20 w-[44px] h-[44px] flex items-center justify-center text-primary hover:opacity-70 transition-opacity"
+        className="fixed z-20 w-[44px] h-[44px] flex items-center justify-center text-primary hover:opacity-70 transition-opacity cursor-pointer"
         style={{
-          top: "calc(var(--cy) + var(--H) / 2 + 4.2vh)",
+          top: "calc(var(--cy) + var(--H) / 2 + 1.2vh)",
           left: "calc(50% - min(28vw, 370px) - 22px)"
         }}
       >
@@ -1842,9 +1842,9 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
           motionRef.current.T = Math.round(motionRef.current.T) + 1;
         }}
         aria-label="Tập tiếp theo"
-        className="fixed z-20 w-[44px] h-[44px] flex items-center justify-center text-primary hover:opacity-70 transition-opacity"
+        className="fixed z-20 w-[44px] h-[44px] flex items-center justify-center text-primary hover:opacity-70 transition-opacity cursor-pointer"
         style={{
-          top: "calc(var(--cy) + var(--H) / 2 + 4.2vh)",
+          top: "calc(var(--cy) + var(--H) / 2 + 1.2vh)",
           left: "calc(50% + min(28vw, 370px) - 22px)"
         }}
       >
