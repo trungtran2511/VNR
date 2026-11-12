@@ -18,6 +18,7 @@ import GuessGameView from "./components/GuessGameView";
 import { EVENT_LESSONS } from "./lib/eventLessons";
 import { AppButton, AppLink } from "./components/ui/app-button";
 import { SegmentedControl } from "./components/ui/segmented-control";
+import { AppDropdown } from "./components/ui/app-dropdown";
 import { SearchField } from "./components/ui/search-field";
 import {
   CHAPTERS_DATA,
@@ -45,7 +46,8 @@ import {
   Grid3x3,
   Printer,
   Timer,
-  Sparkles
+  Sparkles,
+  Compass
 } from "lucide-react";
 
 // Mỗi cuốn trên kệ mở thẳng tới mục kiến thức riêng của nó.
@@ -82,6 +84,14 @@ const PLAY_MODES: ModeDef[] = [
 export default function App() {
   const [activeReadingBook, setActiveBook] = useState<BookItem | null>(null);
   const [studyMode, setStudyMode] = useState<StudyMode>("read");
+  const [activeGroup, setActiveGroup] = useState<"tools" | "games">("tools");
+  useEffect(() => {
+    if (PLAY_MODES.some((m) => m.mode === studyMode)) {
+      setActiveGroup("games");
+    } else if (TOOL_MODES.some((m) => m.mode === studyMode)) {
+      setActiveGroup("tools");
+    }
+  }, [studyMode]);
   const [motionFull, setMotionFull] = useState(() => getMotionPref() === "full");
   useEffect(() => {
     applyMotionPref(motionFull ? "full" : "auto");
@@ -233,32 +243,57 @@ export default function App() {
         </AppButton>
 
         {/* Catalogue Chapter & Mode Switcher */}
-        <SegmentedControl
-          ariaLabel="Chuyển chương và chế độ học"
-          items={[
-            { label: "NHẬP MÔN", bookIdx: 0, icon: BookOpen },
-            { label: "CHƯƠNG 1", bookIdx: 5, icon: BookOpen },
-            { label: "CHƯƠNG 2", bookIdx: 6, icon: BookOpen },
-            { label: "CHƯƠNG 3", bookIdx: 9, icon: BookOpen },
-            { label: "NIÊN BIỂU", bookIdx: 10, icon: Clock },
-            { label: "TRẮC NGHIỆM", bookIdx: 11, icon: FileCheck2 }
-          ].map((item) => {
-            const target = BOOKS_COLLECTION[item.bookIdx];
-            const Icon = item.icon;
-            return {
-              key: item.label,
-              label: item.label,
-              icon: <Icon className="size-3" strokeWidth={1.5} />,
-              active:
-                studyMode === "read" &&
-                activeReadingBook.category === target.category &&
-                (target.category !== "chapter" ||
-                  activeReadingBook.chapterId === target.chapterId),
-              onSelect: () => setActiveReadingBook(target)
-            };
-          })}
-          className="hidden xl:inline-flex shrink-0 [&_button]:px-2 [&_button]:gap-1.5"
-        />
+        <div className="flex items-center gap-2 overflow-x-auto select-none">
+          {EVENT_LESSONS[activeReadingBook.id] && (
+            <SegmentedControl
+              ariaLabel="Chế độ học bài"
+              items={[
+                {
+                  key: "lesson",
+                  label: "BÀI CHI TIẾT",
+                  icon: <ScrollText className="size-3" strokeWidth={1.5} />,
+                  active: studyMode === "lesson",
+                  onSelect: () => setStudyMode("lesson")
+                },
+                {
+                  key: "read",
+                  label: activeReadingBook.category === "chapter" ? "TÓM LƯỢC CHƯƠNG" : "TỔNG QUAN",
+                  icon: <BookOpen className="size-3" strokeWidth={1.5} />,
+                  active: studyMode === "read",
+                  onSelect: () => setStudyMode("read")
+                }
+              ]}
+              className="shrink-0 [&_button]:px-2.5 [&_button]:gap-1.5"
+            />
+          )}
+
+          <SegmentedControl
+            ariaLabel="Chuyển chương"
+            items={[
+              { label: "NHẬP MÔN", bookIdx: 0, icon: BookOpen },
+              { label: "CHƯƠNG 1", bookIdx: 5, icon: BookOpen },
+              { label: "CHƯƠNG 2", bookIdx: 6, icon: BookOpen },
+              { label: "CHƯƠNG 3", bookIdx: 9, icon: BookOpen },
+              { label: "NIÊN BIỂU", bookIdx: 10, icon: Clock },
+              { label: "TRẮC NGHIỆM", bookIdx: 11, icon: FileCheck2 }
+            ].map((item) => {
+              const target = BOOKS_COLLECTION[item.bookIdx];
+              const Icon = item.icon;
+              return {
+                key: item.label,
+                label: item.label,
+                icon: <Icon className="size-3" strokeWidth={1.5} />,
+                active:
+                  (studyMode === "read" || studyMode === "lesson") &&
+                  activeReadingBook.category === target.category &&
+                  (target.category !== "chapter" ||
+                    activeReadingBook.chapterId === target.chapterId),
+                onSelect: () => setActiveReadingBook(target)
+              };
+            })}
+            className="hidden lg:inline-flex shrink-0 [&_button]:px-2 [&_button]:gap-1.5"
+          />
+        </div>
 
         {/* Search & PDF Link */}
         <div className="flex items-center gap-2 shrink-0">
@@ -350,60 +385,96 @@ export default function App() {
         </label>
       </div>
 
-      {/* Study Mode Bar: Đọc / Flashcards / Kéo thả / Thi thử */}
-      <div className="h-[var(--control-h-lg)] border-b border-border bg-card/60 px-4 md:px-9 flex items-center gap-3 overflow-x-auto flex-shrink-0 z-30">
-        <span className="lbl text-muted-foreground hidden xl:inline">HỌC</span>
-        {(() => {
-          const toItems = (defs: ModeDef[]) =>
-            defs.map((m) => {
-              const Icon = m.icon;
-              return {
-                key: m.mode,
-                label: m.label,
-                icon: <Icon className="size-3" strokeWidth={1.5} />,
-                active: studyMode === m.mode,
-                onSelect: () => setStudyMode(m.mode)
-              };
-            });
-          const learn: ModeDef[] = [
-            ...(EVENT_LESSONS[activeReadingBook.id]
-              ? [{ mode: "lesson" as StudyMode, label: "BÀI CHI TIẾT", icon: ScrollText }]
-              : []),
-            { mode: "read" as StudyMode, label: activeReadingBook.category === "chapter" ? "TÓM LƯỢC CHƯƠNG" : "ĐỌC", icon: BookOpen }
-          ];
-          return (
-            <>
-              <SegmentedControl ariaLabel="Học" items={toItems(learn)} className="shrink-0" />
-              <span className="lbl text-muted-foreground hidden lg:inline">TRA CỨU</span>
-              <SegmentedControl ariaLabel="Tra cứu" items={toItems(TOOL_MODES)} className="shrink-0" />
-              <span className="lbl text-muted-foreground hidden lg:inline">CHƠI</span>
-              <SegmentedControl ariaLabel="Chơi và luyện tập" items={toItems(PLAY_MODES)} className="shrink-0" />
-            </>
-          );
-        })()}
+      {/* Study Mode Bar: 1 Dropdown gộp duy nhất, view toàn bộ tính năng ngang chuẩn Image #2 */}
+      <div className="h-[var(--control-h-lg)] border-b border-border bg-card/75 px-3 md:px-6 flex items-center justify-between gap-3 flex-shrink-0 z-30 relative">
+        <div className="flex items-center gap-3 min-w-0">
+          {/* 1 DROPDOWN DUY NHẤT để chọn nhóm TRA CỨU hoặc CHƠI & ÔN TẬP */}
+          <AppDropdown
+            label={activeGroup === "tools" ? "TRA CỨU" : "CHƠI & ÔN TẬP"}
+            icon={
+              activeGroup === "tools" ? (
+                <Compass className="size-3.5" strokeWidth={1.5} />
+              ) : (
+                <Puzzle className="size-3.5" strokeWidth={1.5} />
+              )
+            }
+            activeKey={activeGroup}
+            items={[
+              {
+                key: "tools",
+                label: "TRA CỨU",
+                icon: <Compass className="size-3.5" strokeWidth={1.5} />,
+                active: activeGroup === "tools",
+                onSelect: () => {
+                  setActiveGroup("tools");
+                  if (!TOOL_MODES.some((m) => m.mode === studyMode)) {
+                    setStudyMode("map");
+                  }
+                }
+              },
+              {
+                key: "games",
+                label: "CHƠI & ÔN TẬP",
+                icon: <Puzzle className="size-3.5" strokeWidth={1.5} />,
+                active: activeGroup === "games",
+                onSelect: () => {
+                  setActiveGroup("games");
+                  if (!PLAY_MODES.some((m) => m.mode === studyMode)) {
+                    setStudyMode("flashcards");
+                  }
+                }
+              }
+            ]}
+          />
 
-        <div className="ml-auto flex items-center gap-1 shrink-0">
+          {/* DẢI NGANG VIEW HẾT CÁC TÍNH NĂNG TƯƠNG ỨNG (CHUẨN IMAGE #2) */}
+          <div className="inline-flex items-stretch rounded-[var(--radius-control)] border border-[var(--border-control)] bg-card divide-x divide-[var(--border-control)] overflow-x-auto scrollbar-none shrink-0">
+            {(activeGroup === "tools" ? TOOL_MODES : PLAY_MODES).map((m) => {
+              const Icon = m.icon;
+              const isSelected = studyMode === m.mode;
+              return (
+                <button
+                  key={m.mode}
+                  type="button"
+                  onClick={() => setStudyMode(m.mode)}
+                  className={`lbl inline-flex items-center gap-1.5 px-3 py-1.5 text-xs select-none transition-colors duration-150 cursor-pointer shrink-0 ${
+                    isSelected
+                      ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                      : "bg-transparent text-foreground hover:bg-muted"
+                  }`}
+                >
+                  <Icon className="size-3.5 shrink-0" strokeWidth={1.5} />
+                  <span>{m.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Nút lật cuốn sách trước/sau */}
+        <div className="flex items-center gap-1 shrink-0 ml-auto">
           <AppButton
             variant="outline"
             size="xs"
             onClick={() => goBook(-1)}
-            title="Cuốn trước (phím ←)"
+            title="Cuốn trước"
             aria-label="Cuốn trước"
             icon={<ChevronLeft className="size-3" strokeWidth={1.5} />}
           />
-          <span className="lbl text-muted-foreground px-1.5 tabular-nums">
+          <span className="lbl text-muted-foreground px-1.5 tabular-nums text-xs">
             {bookIndex + 1}/{BOOKS_COLLECTION.length}
           </span>
           <AppButton
             variant="outline"
             size="xs"
             onClick={() => goBook(1)}
-            title="Cuốn kế (phím →)"
+            title="Cuốn kế"
             aria-label="Cuốn kế"
             icon={<ChevronRight className="size-3" strokeWidth={1.5} />}
           />
         </div>
       </div>
+
 
       {/* Nội dung học: Flashcards chiếm trọn vùng còn lại, không cuộn trang */}
       <main

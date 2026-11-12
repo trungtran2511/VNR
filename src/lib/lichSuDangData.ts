@@ -817,6 +817,321 @@ export const MILESTONES_DATA: Milestone[] = [
     chapterCode: "Chương 3",
     description: "Đại hội đề ra mục tiêu đến năm 2030 là nước đang phát triển có công nghiệp hiện đại, thu nhập trung bình cao; đến năm 2045 là nước phát triển, thu nhập cao.",
     significance: "Định hướng phát triển đất nước trong giai đoạn mới."
+  },
+  {
+    id: "m39",
+    year: "1911",
+    dateStr: "05/06/1911",
+    title: "Nguyễn Tất Thành ra đi tìm đường cứu nước",
+    chapterCode: "Chương 1",
+    description: "Người thanh niên Nguyễn Tất Thành rời bến cảng Nhà Rồng trên con tàu Đô đốc Latouche-Tréville ra đi tìm con đường giải phóng cho dân tộc.",
+    significance: "Mở đầu hành trình tìm kiếm chân lý cứu nước đúng đắn cho cách mạng Việt Nam."
+  },
+  {
+    id: "m40",
+    year: "1920",
+    dateStr: "07/1920",
+    title: "Nguyễn Ái Quốc đọc Sơ thảo Luận cương của Lênin",
+    chapterCode: "Chương 1",
+    description: "Đọc bản 'Sơ thảo lần thứ nhất những Luận cương về vấn đề dân tộc và vấn đề thuộc địa' của Lênin đăng trên báo L'Humanité.",
+    significance: "Bước ngoặt quyết định đưa Nguyễn Ái Quốc tin theo Lênin và chủ nghĩa Mác - Lênin."
+  },
+  {
+    id: "m41",
+    year: "1920",
+    dateStr: "12/1920",
+    title: "Bỏ phiếu tán thành Quốc tế III và sáng lập Đảng Cộng sản Pháp",
+    chapterCode: "Chương 1",
+    description: "Tại Đại hội Tours của Đảng Xã hội Pháp, Nguyễn Ái Quốc bỏ phiếu gia nhập Quốc tế Cộng sản và tham gia sáng lập Đảng Cộng sản Pháp.",
+    significance: "Đánh dấu bước chuyển biến quyết định từ chủ nghĩa yêu nước sang chủ nghĩa cộng sản."
+  },
+  {
+    id: "m42",
+    year: "1925",
+    dateStr: "08/1925",
+    title: "Bãi công Ba Son do Tôn Đức Thắng lãnh đạo",
+    chapterCode: "Chương 1",
+    description: "Công nhân xưởng Ba Son (Sài Gòn) bãi công đòi tăng lương và trì hoãn tàu chiến Pháp sang đàn áp phong trào cách mạng Trung Quốc.",
+    significance: "Đánh dấu phong trào công nhân Việt Nam bắt đầu chuyển từ đấu tranh tự phát sang đấu tranh tự giác."
+  },
+  {
+    id: "m43",
+    year: "1928",
+    dateStr: "1928",
+    title: "Chủ trương 'Vô sản hóa' của Hội VN Cách mạng Thanh niên",
+    chapterCode: "Chương 1",
+    description: "Đưa hội viên vào các nhà máy, hầm mỏ, đồn điền cùng lao động và sinh hoạt với công nhân.",
+    significance: "Thúc đẩy mạnh mẽ việc truyền bá chủ nghĩa Mác - Lênin vào phong trào công nhân và phong trào yêu nước."
+  },
+  {
+    id: "m44",
+    year: "1929",
+    dateStr: "25/07/1929",
+    title: "An Nam Cộng sản Đảng được thành lập",
+    chapterCode: "Chương 1",
+    description: "Các hội viên tiên tiến của Hội Việt Nam Cách mạng Thanh niên ở Nam Kỳ thành lập An Nam Cộng sản Đảng.",
+    significance: "Khẳng định sự phân hóa sâu sắc và xu thế phát triển tất yếu của phong trào cộng sản ở Việt Nam."
+  },
+  {
+    id: "m45",
+    year: "1929",
+    dateStr: "09/1929",
+    title: "Đông Dương Cộng sản Liên đoàn ra đời",
+    chapterCode: "Chương 1",
+    description: "Các đảng viên tiên tiến của Tân Việt Cách mạng Đảng tuyên bố thành lập Đông Dương Cộng sản Liên đoàn tại Trung Kỳ.",
+    significance: "Hoàn tất sự xuất hiện của ba tổ chức cộng sản trong năm 1929 ở cả ba miền đất nước."
+  },
+  {
+    id: "m46",
+    year: "1935",
+    dateStr: "27/03/1935",
+    title: "Đại hội đại biểu lần thứ I của Đảng tại Ma Cao",
+    chapterCode: "Chương 1",
+    description: "Đại hội họp tại Ma Cao (Trung Quốc), bầu Ban Chấp hành Trung ương mới do Lê Hồng Phong làm Tổng Bí thư.",
+    significance: "Đánh dấu sự phục hồi hệ thống tổ chức của Đảng và phong trào cách mạng sau đợt khủng bố trắng."
+  },
+  {
+    id: "m47",
+    year: "1941",
+    dateStr: "28/01/1941",
+    title: "Nguyễn Ái Quốc về nước trực tiếp lãnh đạo cách mạng",
+    chapterCode: "Chương 1",
+    description: "Sau 30 năm bôn ba hải ngoại, lãnh tụ Nguyễn Ái Quốc vượt qua mốc 108 biên giới Việt - Trung về đến Pác Bó (Hà Quảng, Cao Bằng).",
+    significance: "Trực tiếp cùng Trung ương Đảng chèo lái con thuyền cách mạng Việt Nam đi đến thắng lợi của Cách mạng Tháng Tám."
+  },
+  {
+    id: "m48",
+    year: "1943",
+    dateStr: "02/1943",
+    title: "Ban Thường vụ TW Đảng thông qua Đề cương về văn hóa Việt Nam",
+    chapterCode: "Chương 1",
+    description: "Văn kiện do Tổng Bí thư Trường Chinh soạn thảo, xác lập ba nguyên tắc vận động văn hóa: Dân tộc hóa, Đại chúng hóa, Khoa học hóa.",
+    significance: "Cương lĩnh văn hóa đầu tiên của Đảng, quy tụ đội ngũ trí thức, văn nghệ sĩ theo ngọn cờ cứu quốc."
+  },
+  {
+    id: "m49",
+    year: "1945",
+    dateStr: "14/08/1945",
+    title: "Hội nghị toàn quốc của Đảng họp tại Tân Trào",
+    chapterCode: "Chương 1",
+    description: "Hội nghị quyết định phát động toàn dân Tổng khởi nghĩa giành chính quyền trước khi quân Đồng minh vào Đông Dương.",
+    significance: "Kịp thời nắm bắt thời cơ ngàn năm có một để lãnh đạo nhân dân đứng lên giành chính quyền."
+  },
+  {
+    id: "m50",
+    year: "1945",
+    dateStr: "16/08/1945",
+    title: "Đại hội Quốc dân Tân Trào",
+    chapterCode: "Chương 1",
+    description: "Hơn 60 đại biểu đại diện cho ba miền Bắc - Trung - Nam, các dân tộc, đoàn thể và kiều bào dự hội nghị tại đình Tân Trào.",
+    significance: "Tán thành chủ trương Tổng khởi nghĩa, thông qua 10 chính sách lớn của Việt Minh và cử ra Ủy ban Dân tộc giải phóng."
+  },
+  {
+    id: "m51",
+    year: "1945",
+    dateStr: "23/09/1945",
+    title: "Nhân dân Nam Bộ mở đầu cuộc kháng chiến chống Pháp",
+    chapterCode: "Chương 2",
+    description: "Thực dân Pháp nổ súng đánh úp trụ sở Ủy ban Hành chính Nam Bộ tại Sài Gòn; quân dân Nam Bộ kiên quyết vùng lên chiến đấu bảo vệ độc lập.",
+    significance: "Mở đầu cuộc chiến đấu kiên cường giữ vững nền độc lập, thể hiện phẩm chất 'Thành đồng Tổ quốc'."
+  },
+  {
+    id: "m52",
+    year: "1945",
+    dateStr: "25/11/1945",
+    title: "Chỉ thị 'Kháng chiến kiến quốc' của Trung ương Đảng",
+    chapterCode: "Chương 2",
+    description: "Chỉ thị xác định kẻ thù chính lúc này là thực dân Pháp xâm lược, vạch ra 4 nhiệm vụ cấp bách: củng cố chính quyền, chống thực dân Pháp, bài trừ nội phản, cải thiện đời sống.",
+    significance: "Soi sáng con đường cách mạng Việt Nam trong tình thế 'ngàn cân treo sợi tóc'."
+  },
+  {
+    id: "m53",
+    year: "1946",
+    dateStr: "06/01/1946",
+    title: "Cuộc Tổng tuyển cử đầu tiên bầu Quốc hội Việt Nam",
+    chapterCode: "Chương 2",
+    description: "Hàng triệu cử tri cả nước vượt qua bom đạn đi bỏ phiếu bầu ra Quốc hội khóa I gồm 333 đại biểu.",
+    significance: "Khẳng định quyền làm chủ thực sự của nhân dân và tính hợp pháp, hợp hiến của Nhà nước Việt Nam Dân chủ Cộng hòa."
+  },
+  {
+    id: "m54",
+    year: "1946",
+    dateStr: "06/03/1946",
+    title: "Chủ tịch Hồ Chí Minh ký Hiệp định Sơ bộ",
+    chapterCode: "Chương 2",
+    description: "Chủ tịch Hồ Chí Minh thay mặt Chính phủ ký Hiệp định Sơ bộ với đại diện Pháp là Jean Sainteny, đồng ý cho 15.000 quân Pháp vào miền Bắc thay thế quân Tưởng.",
+    significance: "Sách lược ngoại giao tài tình 'hòa để tiến', tránh đối đầu cùng lúc nhiều kẻ thù và tranh thủ thời gian chuẩn bị kháng chiến."
+  },
+  {
+    id: "m55",
+    year: "1946",
+    dateStr: "09/11/1946",
+    title: "Quốc hội thông qua bản Hiến pháp đầu tiên của nước ta",
+    chapterCode: "Chương 2",
+    description: "Kỳ họp thứ hai Quốc hội khóa I thông qua Hiến pháp năm 1946 – bản hiến pháp dân chủ tiến bộ đầu tiên trong lịch sử dân tộc.",
+    significance: "Đặt nền tảng pháp lý vững chắc cho chế độ dân chủ cộng hòa và quyền tự do, bình đẳng của mọi công dân."
+  },
+  {
+    id: "m56",
+    year: "1948",
+    dateStr: "11/06/1948",
+    title: "Chủ tịch Hồ Chí Minh ra Lời kêu gọi Thi đua ái quốc",
+    chapterCode: "Chương 2",
+    description: "Bác Hồ kêu gọi toàn thể đồng bào thi đua diệt giặc đói, diệt giặc dốt, diệt giặc ngoại xâm để xây dựng đất nước kháng chiến thành công.",
+    significance: "Khơi dậy mạnh mẽ nguồn lực to lớn và tinh thần tự lực cánh sinh của toàn thể dân tộc."
+  },
+  {
+    id: "m57",
+    year: "1950",
+    dateStr: "01/1950",
+    title: "Liên Xô, Trung Quốc công nhận và đặt quan hệ ngoại giao với Việt Nam",
+    chapterCode: "Chương 2",
+    description: "Nước CHND Trung Hoa và Liên bang Xô viết chính thức tuyên bố công nhận và thiết lập quan hệ ngoại giao với Việt Nam Dân chủ Cộng hòa.",
+    significance: "Phá vỡ hoàn toàn thế bao vây cô lập quốc tế của chủ nghĩa đế quốc đối với căn cứ địa kháng chiến Việt Nam."
+  },
+  {
+    id: "m58",
+    year: "1959",
+    dateStr: "19/05/1959",
+    title: "Khai mở tuyến đường vận tải quân sự chiến lược Trường Sơn",
+    chapterCode: "Chương 2",
+    description: "Đoàn 559 được thành lập để mở đường Trường Sơn chi viện sức người, vũ khí và lương thực từ hậu phương lớn miền Bắc cho tiền tuyến lớn miền Nam.",
+    significance: "Huyết mạch giao thông chiến lược huyền thoại quyết định thắng lợi vẻ vang của cuộc kháng chiến chống Mỹ cứu nước."
+  },
+  {
+    id: "m59",
+    year: "1959",
+    dateStr: "01/1959",
+    title: "Nghị quyết Trung ương 15 về đường lối cách mạng miền Nam",
+    chapterCode: "Chương 2",
+    description: "Hội nghị Trung ương 15 (khóa II) xác định con đường cơ bản của cách mạng miền Nam là dùng bạo lực cách mạng của quần chúng.",
+    significance: "Đáp ứng đúng nguyện vọng cháy bỏng của nhân dân miền Nam, thổi bùng lên ngọn lửa Đồng Khởi lịch sử."
+  },
+  {
+    id: "m60",
+    year: "1963",
+    dateStr: "02/01/1963",
+    title: "Chiến thắng Ấp Bắc (Mỹ Tho)",
+    chapterCode: "Chương 2",
+    description: "Quân và dân Mỹ Tho bẻ gãy cuộc hành quân càn quét quy mô lớn của đối phương, tiêu diệt nhiều xe bọc thép M113 và máy bay trực thăng.",
+    significance: "Đánh dấu sự phá sản về mặt chiến thuật của chiến lược 'Chiến tranh đặc biệt' của đế quốc Mỹ."
+  },
+  {
+    id: "m61",
+    year: "1965",
+    dateStr: "18/08/1965",
+    title: "Chiến thắng Vạn Tường (Quảng Ngãi)",
+    chapterCode: "Chương 2",
+    description: "Trận đọ sức trực tiếp đầu tiên giữa quân giải phóng và lực lượng lính thủy đánh bộ Mỹ tại bán đảo Vạn Tường.",
+    significance: "Chứng minh quân dân miền Nam hoàn toàn có khả năng đánh thắng quân đội viễn chinh Mỹ trong 'Chiến tranh cục bộ'."
+  },
+  {
+    id: "m62",
+    year: "1968",
+    dateStr: "30/01/1968",
+    title: "Tổng tiến công và nổi dậy Tết Mậu Thân 1968",
+    chapterCode: "Chương 2",
+    description: "Lực lượng vũ trang và nhân dân miền Nam bất ngờ đồng loạt tiến công vào hầu khắp các thành phố, thị xã, sào huyệt đầu não của địch.",
+    significance: "Làm lung lay ý chí xâm lược của Mỹ, buộc Mỹ chấm dứt ném bom miền Bắc và chấp nhận đàm phán tại Hội nghị Paris."
+  },
+  {
+    id: "m63",
+    year: "1975",
+    dateStr: "10/03/1975",
+    title: "Chiến thắng Buôn Ma Thuột mở màn Chiến dịch Tây Nguyên",
+    chapterCode: "Chương 2",
+    description: "Trận đánh then chốt điểm trúng huyệt hiểm yếu giải phóng thị xã Buôn Ma Thuột, làm rung chuyển toàn bộ hệ thống phòng thủ đối phương.",
+    significance: "Mở ra bước ngoặt quyết định chuyển từ thế tiến công chiến lược sang Tổng tiến công và nổi dậy giải phóng hoàn toàn miền Nam."
+  },
+  {
+    id: "m64",
+    year: "1975",
+    dateStr: "29/03/1975",
+    title: "Chiến dịch Huế - Đà Nẵng toàn thắng",
+    chapterCode: "Chương 2",
+    description: "Quân ta tiến công thần tốc đập tan căn cứ quân sự liên hợp khổng lồ Đà Nẵng, quét sạch đối phương ở dải đất miền Trung.",
+    significance: "Tạo ưu thế tuyệt đối về quân sự và tinh thần để Bộ Chính trị quyết định mở Chiến dịch Hồ Chí Minh lịch sử."
+  },
+  {
+    id: "m65",
+    year: "1979",
+    dateStr: "1979",
+    title: "Chiến đấu bảo vệ biên giới Tây Nam và biên giới phía Bắc",
+    chapterCode: "Chương 3",
+    description: "Quân và dân cả nước kiên cường chiến đấu đánh bại các cuộc tiến công xâm lấn biên giới, giữ vững toàn vẹn lãnh thổ thiêng liêng.",
+    significance: "Bảo vệ vững chắc nền độc lập, chủ quyền Tổ quốc và hoàn thành nghĩa vụ quốc tế cao cả."
+  },
+  {
+    id: "m66",
+    year: "1981",
+    dateStr: "13/01/1981",
+    title: "Chỉ thị 100-CT/TW về khoán sản phẩm trong nông nghiệp",
+    chapterCode: "Chương 3",
+    description: "Ban Bí thư Trung ương Đảng ban hành chủ trương cải tiến công tác khoán, mở rộng khoán sản phẩm đến nhóm và người lao động trong HTX nông nghiệp.",
+    significance: "Bước đột phá đầu tiên cởi trói tư duy quản lý kinh tế nông nghiệp, tiền đề dẫn tới Khoán 10."
+  },
+  {
+    id: "m67",
+    year: "1985",
+    dateStr: "06/1985",
+    title: "Hội nghị TW8 khóa V về xóa bỏ quan liêu bao cấp",
+    chapterCode: "Chương 3",
+    description: "Hội nghị Trung ương 8 (khóa V) thảo luận về Giá - Lương - Tiền, quyết định dứt khoát xóa bỏ cơ chế tập trung quan liêu bao cấp.",
+    significance: "Đột phá tư duy kinh tế then chốt mở đường trực tiếp cho đường lối Đổi mới tại Đại hội VI."
+  },
+  {
+    id: "m68",
+    year: "1988",
+    dateStr: "05/04/1988",
+    title: "Nghị quyết 10-NQ/TW của Bộ Chính trị (Khoán 10)",
+    chapterCode: "Chương 3",
+    description: "Nghị quyết về đổi mới quản lý kinh tế nông nghiệp thừa nhận hộ nông dân là đơn vị kinh tế tự chủ, giao ruộng đất ổn định lâu dài.",
+    significance: "Tạo động lực mạnh mẽ giải phóng sức sản xuất nông nghiệp, đưa Việt Nam từ thiếu lương thực trở thành nước xuất khẩu gạo hàng đầu."
+  },
+  {
+    id: "m69",
+    year: "2000",
+    dateStr: "13/07/2000",
+    title: "Ký kết Hiệp định Thương mại song phương Việt Nam - Hoa Kỳ (BTA)",
+    chapterCode: "Chương 3",
+    description: "Hiệp định BTA được ký kết tại Washington D.C, bình thường hóa hoàn toàn quan hệ kinh tế thương mại giữa hai quốc gia.",
+    significance: "Tạo xung lực quan trọng mở rộng thị trường xuất khẩu và chuẩn bị điều kiện gia nhập WTO."
+  },
+  {
+    id: "m70",
+    year: "2006",
+    dateStr: "04/2006",
+    title: "Đại hội đại biểu toàn quốc lần thứ X của Đảng",
+    chapterCode: "Chương 3",
+    description: "Đại hội đề ra mục tiêu sớm đưa nước ta ra khỏi tình trạng kém phát triển, cho phép đảng viên làm kinh tế tư nhân.",
+    significance: "Bước tiến lớn trong đổi mới tư duy lý luận về kinh tế tư nhân và vai trò của đảng viên."
+  },
+  {
+    id: "m71",
+    year: "2013",
+    dateStr: "28/11/2013",
+    title: "Quốc hội thông qua bản Hiến pháp năm 2013",
+    chapterCode: "Chương 3",
+    description: "Quốc hội khóa XIII thông qua bản Hiến pháp thời kỳ đẩy mạnh toàn diện công cuộc đổi mới và hội nhập quốc tế.",
+    significance: "Thể chế hóa Cương lĩnh năm 2011, khẳng định bản chất Nhà nước pháp quyền XHCN và quyền con người."
+  },
+  {
+    id: "m72",
+    year: "2016",
+    dateStr: "01/2016",
+    title: "Đại hội đại biểu toàn quốc lần thứ XII của Đảng",
+    chapterCode: "Chương 3",
+    description: "Đại hội xác định mục tiêu phát triển kinh tế nhanh, bền vững, gắn với đẩy mạnh xây dựng chỉnh đốn Đảng và phòng chống tham nhũng, lãng phí.",
+    significance: "Tạo dấu ấn mới về quyết tâm chính trị trong công tác phòng chống tham nhũng, tiêu cực và chỉnh đốn Đảng."
+  },
+  {
+    id: "m73",
+    year: "2020",
+    dateStr: "2020",
+    title: "Việt Nam hoàn thành xuất sắc vai trò Chủ tịch ASEAN 2020",
+    chapterCode: "Chương 3",
+    description: "Đảm nhận thành công vai trò kép: Chủ tịch ASEAN 2020 và Ủy viên không thường trực Hội đồng Bảo an Liên Hợp Quốc nhiệm kỳ 2020 - 2021.",
+    significance: "Khẳng định bản lĩnh đối ngoại vững vàng và uy tín quốc tế ngày càng cao của đất nước."
   }
 ];
 
