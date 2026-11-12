@@ -13,7 +13,6 @@ import MindmapView from "./components/MindmapView";
 import CongressView from "./components/CongressView";
 import CrosswordView from "./components/CrosswordView";
 import CheatSheetView from "./components/CheatSheetView";
-import AiAssistant from "./components/AiAssistant";
 import MatchGameView from "./components/MatchGameView";
 import GuessGameView from "./components/GuessGameView";
 import { EVENT_LESSONS } from "./lib/eventLessons";
@@ -177,8 +176,7 @@ export default function App() {
             setActiveReadingBook(book, BOOK_FOCUS[book.id] ?? null);
           }}
         />
-        <AiAssistant />
-      </>
+        </>
     );
   }
 
@@ -490,7 +488,6 @@ export default function App() {
         )}
         </div>
       </main>
-      <AiAssistant />
     </div>
   );
 }
