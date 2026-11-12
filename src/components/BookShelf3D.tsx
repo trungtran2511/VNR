@@ -12,8 +12,13 @@ import {
   X,
   Compass,
   Clock,
-  FileCheck2
+  FileCheck2,
+  Volume2,
+  VolumeX,
+  GraduationCap
 } from "lucide-react";
+import TeamInfoModal from "./TeamInfoModal";
+import { toggleBgm, subscribeBgm } from "../lib/bgm";
 import { AppButton, AppLink } from "./ui/app-button";
 
 export type CoverMotif =
@@ -806,7 +811,9 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
   const [detailBook, setDetailBook] = useState<BookItem>(BOOKS_COLLECTION[5]);
   const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
   const isDetailOpenRef = useRef<boolean>(false);
-
+  const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
+  const [bgmPlaying, setBgmPlaying] = useState(false);
+  useEffect(() => subscribeBgm(setBgmPlaying), []);
   // Motion engine mutable state (driven by 1 rAF loop)
   const motionRef = useRef({
     s: 5 + 12,
@@ -1510,30 +1517,33 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
           aria-label="Chuyên mục lưu trữ"
           className="flex items-center gap-6 md:gap-8"
         >
+          {/* Nút tròn loa duy nhất bật/tắt nhạc */}
           <button
-            onClick={() =>
-              openDetailSheet(BOOKS_COLLECTION[motionRef.current.activeIdx])
-            }
-            className="hidden md:inline-flex items-center gap-1.5 lbl text-primary hover:opacity-75 transition-opacity"
+            type="button"
+            onClick={() => toggleBgm()}
+            className={`w-7 h-7 md:w-8 md:h-8 rounded-full border transition-all flex items-center justify-center cursor-pointer shrink-0 ${
+              bgmPlaying
+                ? "border-primary bg-primary text-primary-foreground shadow-sm animate-pulse"
+                : "border-primary/60 bg-card/80 text-primary hover:text-primary-foreground hover:bg-primary"
+            }`}
+            title={bgmPlaying ? "Tắt nhạc nền" : "Bật nhạc: Còn Gì Đẹp Hơn x Nhà Tôi Có Treo Một Lá Cờ"}
+            aria-label="Bật hoặc tắt nhạc nền"
           >
-            <Compass className="size-3.5" strokeWidth={1.5} />
-            <span>CHƯƠNG HỌC</span>
-          </button>
-          <button
-            onClick={() => onOpenBook(BOOKS_COLLECTION[10])}
-            className="hidden md:inline-flex items-center gap-1.5 lbl text-primary hover:opacity-75 transition-opacity"
-          >
-            <Clock className="size-3.5" strokeWidth={1.5} />
-            <span>BIÊN NIÊN SỬ</span>
-          </button>
-          <button
-            onClick={() => onOpenBook(BOOKS_COLLECTION[11])}
-            className="hidden md:inline-flex items-center gap-1.5 lbl text-primary hover:opacity-75 transition-opacity"
-          >
-            <FileCheck2 className="size-3.5" strokeWidth={1.5} />
-            <span>TRẮC NGHIỆM</span>
+            {bgmPlaying ? (
+              <Volume2 className="size-3.5" strokeWidth={1.5} />
+            ) : (
+              <VolumeX className="size-3.5" strokeWidth={1.5} />
+            )}
           </button>
 
+          {/* Nút mở Thông tin Nhóm 1 - Lớp IA1902 - GV THUYNT245 thay cho 3 nút cũ */}
+          <button
+            onClick={() => setIsTeamModalOpen(true)}
+            className="inline-flex items-center gap-1.5 lbl text-primary hover:opacity-80 transition-all cursor-pointer border border-primary/50 bg-primary/10 px-3 py-1 rounded-md shadow-2xs"
+          >
+            <GraduationCap className="size-3.5 text-primary" strokeWidth={1.5} />
+            <span className="font-bold">THÔNG TIN NHÓM & ĐỀ TÀI SPST</span>
+          </button>
           <a
             href="/LỊCH SỬ ĐẢNG 221TR - 2026.pdf"
             target="_blank"
@@ -2087,8 +2097,8 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
           </div>
         </div>
       </div>
-
-
+      {/* Modal Thông tin Nhóm 1 - Lớp IA1902 - GV THUYNT245 */}
+      <TeamInfoModal isOpen={isTeamModalOpen} onClose={() => setIsTeamModalOpen(false)} />
     </div>
   );
 }

@@ -15,6 +15,8 @@ import CrosswordView from "./components/CrosswordView";
 import CheatSheetView from "./components/CheatSheetView";
 import MatchGameView from "./components/MatchGameView";
 import GuessGameView from "./components/GuessGameView";
+import TeamInfoModal from "./components/TeamInfoModal";
+import { toggleBgm, subscribeBgm } from "./lib/bgm";
 import { EVENT_LESSONS } from "./lib/eventLessons";
 import { AppButton, AppLink } from "./components/ui/app-button";
 import { SegmentedControl } from "./components/ui/segmented-control";
@@ -47,7 +49,10 @@ import {
   Printer,
   Timer,
   Sparkles,
-  Compass
+  Compass,
+  Volume2,
+  VolumeX,
+  GraduationCap
 } from "lucide-react";
 
 // Mỗi cuốn trên kệ mở thẳng tới mục kiến thức riêng của nó.
@@ -92,6 +97,9 @@ export default function App() {
       setActiveGroup("tools");
     }
   }, [studyMode]);
+  const [bgmPlaying, setBgmPlaying] = useState(false);
+  useEffect(() => subscribeBgm(setBgmPlaying), []);
+  const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
   const [motionFull, setMotionFull] = useState(() => getMotionPref() === "full");
   useEffect(() => {
     applyMotionPref(motionFull ? "full" : "auto");
@@ -337,17 +345,24 @@ export default function App() {
             )}
           </div>
 
-          <AppButton
-            variant={motionFull ? "primary" : "outline"}
-            size="xs"
-            className="hidden sm:inline-flex"
-            aria-pressed={motionFull}
-            title="Bật hiệu ứng chuyển động, kể cả khi hệ điều hành đang tắt animation"
-            onClick={() => setMotionFull((v) => !v)}
-            icon={<Sparkles className="size-3" strokeWidth={1.5} />}
+          {/* Nút tròn loa duy nhất bật/tắt nhạc */}
+          <button
+            type="button"
+            onClick={() => toggleBgm()}
+            className={`w-7 h-7 md:w-8 md:h-8 rounded-full border transition-all flex items-center justify-center cursor-pointer shrink-0 ${
+              bgmPlaying
+                ? "border-primary bg-primary text-primary-foreground shadow-sm animate-pulse"
+                : "border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted"
+            }`}
+            title={bgmPlaying ? "Tắt nhạc" : "Bật nhạc: Còn Gì Đẹp Hơn x Nhà Tôi Có Treo Một Lá Cờ"}
+            aria-label="Bật hoặc tắt nhạc nền"
           >
-            HIỆU ỨNG
-          </AppButton>
+            {bgmPlaying ? (
+              <Volume2 className="size-3.5" strokeWidth={1.5} />
+            ) : (
+              <VolumeX className="size-3.5" strokeWidth={1.5} />
+            )}
+          </button>
 
           <AppLink
             href="/LỊCH SỬ ĐẢNG 221TR - 2026.pdf"
@@ -559,6 +574,9 @@ export default function App() {
         )}
         </div>
       </main>
+
+      {/* Modal Thông tin Nhóm 1 - Lớp IA1902 - GV THUYNT245 */}
+      <TeamInfoModal isOpen={isTeamModalOpen} onClose={() => setIsTeamModalOpen(false)} />
     </div>
   );
 }
