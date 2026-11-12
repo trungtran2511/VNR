@@ -1,3 +1,5 @@
+import examArtwork from "../assets/exam-study.jpg?inline";
+import coverFontCss from "../assets/cover-font.css?raw";
 import { useEffect, useRef, useState, useCallback } from "react";
 import {
   ArrowLeft,
@@ -349,7 +351,7 @@ export const BOOKS_COLLECTION: BookItem[] = [
     coverMainTitle: ["TỔNG KẾT &", "NGÂN HÀNG", "ĐỀ THI 2026"],
     subtitle: "5 BÀI HỌC LỚN & HỆ THỐNG CÂU HỎI ÔN TẬP",
     docCode: "CHUẨN BỘ GD&ĐT • 221 TRANG",
-    year: 1996,
+    year: 2026,
     period: "CHUẨN BỘ GD&ĐT",
     genre: "TRẮC NGHIỆM • ĐÁP ÁN CHI TIẾT",
     category: "quiz",
@@ -467,13 +469,7 @@ function renderMotifIllustration(motif: CoverMotif, accent: string, paper: strin
         <text x="324" y="468" text-anchor="middle" fill="${accent}" font-family="Inter Tight, sans-serif" font-size="12" font-weight="800">2026</text>
       `;
     case "exam":
-      return `
-        <rect x="152" y="342" width="170" height="190" rx="4" fill="none" stroke="${accent}" stroke-width="2.2"/>
-        <line x1="180" y1="385" x2="294" y2="385" stroke="${paper}" stroke-width="2"/>
-        <line x1="180" y1="418" x2="294" y2="418" stroke="${paper}" stroke-width="1.6" opacity="0.75"/>
-        <line x1="180" y1="451" x2="264" y2="451" stroke="${paper}" stroke-width="1.6" opacity="0.75"/>
-        <polyline points="180,492 198,508 234,474" fill="none" stroke="${accent}" stroke-width="3.2"/>
-      `;
+      return `<image href="${examArtwork}" x="65" y="330" width="344" height="252" preserveAspectRatio="xMidYMid slice"/>`;
   }
 }
 
@@ -548,6 +544,7 @@ function buildCoverSvgDataUri(book: BookItem): string {
   const eraDefs = getEraSvgDefs(book.era, `cv_${book.id}`);
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 474 900" width="474" height="900">
+    <style>${coverFontCss}</style>
     <defs>
       <linearGradient id="bgGrad_cv_${book.id}" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="${book.themeBg}"/>
@@ -641,7 +638,7 @@ function buildCoverSvgDataUri(book: BookItem): string {
     <!-- Vietnamese Subtitle & Archival Description -->
     <text x="239" y="620" text-anchor="middle" fill="${book.themeAccent}" font-family="Inter Tight, system-ui, sans-serif" font-size="11.5" font-weight="700" letter-spacing="1.5px">${subtitle}</text>
     <line x1="140" y1="638" x2="338" y2="638" stroke="${book.themePaper}" stroke-width="0.8" opacity="0.4"/>
-    <text x="239" y="664" text-anchor="middle" fill="${book.themePaper}" font-family="Newsreader, Georgia, serif" font-size="14.5" font-style="italic" opacity="0.9">${genre}</text>
+    <text x="239" y="664" text-anchor="middle" fill="${book.themePaper}" font-family="CoverText, sans-serif" font-size="13" font-style="normal" opacity="0.9">${genre}</text>
     <!-- Large Watermark Year -->
     <text x="239" y="760" text-anchor="middle" fill="${book.themePaper}" font-family="Inter Tight, system-ui, sans-serif" font-size="70" font-weight="800" letter-spacing="4" opacity="${isOldColonial ? 0.18 : 0.12}">${book.year}</text>
 
@@ -1461,22 +1458,8 @@ export default function BookShelf3D({ onOpenBook }: BookShelf3DProps) {
         </filter>
         <rect width="100%" height="100%" filter="url(#paper-grain-filter)" />
       </svg>
-      {/* Vintage Parchment Atmosphere Background (Layer 0, pointer-events none) */}
-      <div
-        aria-hidden="true"
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: 'url("/vintage-bg.jpg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center 42%",
-          opacity: 0.055,
-          filter: "blur(2.5px) saturate(0.85) contrast(1.08)",
-          mixBlendMode: "multiply",
-          maskImage: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.95) 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.95) 100%)"
-        }}
-      />
-
+      <div aria-hidden="true" className="living-landscape" />
+      <div aria-hidden="true" className="living-mist" />
 
       {/* 1. Top Bar */}
       <header className="fixed top-0 left-0 right-0 h-[60px] md:h-[76px] px-4 md:px-9 flex items-center justify-between text-primary z-30">

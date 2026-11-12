@@ -35,8 +35,8 @@
   --radius-surface: 8px;
   --border-control: color-mix(in srgb, var(--ink) 35%, transparent);
   --border-control-strong: color-mix(in srgb, var(--ink) 80%, transparent);
-  --H: min(47vh, 33vw);
-  --cy: 41%;
+  --H: min(56.4vh, 39.6vw);
+  --cy: 38%;
   /* Semantic UI Tokens mapped to Paper/Cobalt System (UI_DESIGN_RULES.md Section III) */
   --background: var(--paper);
   --foreground: var(--ink);
@@ -62,8 +62,8 @@
 
 @media (max-width: 767px) {
   :root {
-    --H: min(68vw, 40svh);
-    --cy: 43%;
+    --H: min(81.6vw, 48svh);
+    --cy: 39%;
   }
 }
 
@@ -414,3 +414,10 @@
 }
 
 .tape-face { cursor: pointer; }
+
+.living-landscape { position: fixed; inset: -3%; z-index: 0; pointer-events: none; background: url('/vietnam-landscape.jpg') center / cover; opacity: .48; filter: saturate(.65); animation: landscape-drift 36s ease-in-out infinite alternate; }
+.living-mist { position: fixed; inset: -15%; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at 30% 60%, #f5f2e980, transparent 55%), radial-gradient(ellipse at 80% 30%, #fff9e870, transparent 45%); animation: mist-drift 24s ease-in-out infinite alternate; }
+@keyframes landscape-drift { from { transform: scale(1) translateX(-.7%); } to { transform: scale(1.045) translateX(.7%); } }
+@keyframes mist-drift { from { transform: translate(-3%, 1%); opacity: .5; } to { transform: translate(3%, -1%); opacity: .85; } }
+@media (prefers-reduced-motion: reduce) { .living-landscape, .living-mist { animation: none; } }
+@media (max-height: 700px) and (min-width: 768px) { :root { --H: min(49vh, 39.6vw); --cy: 38%; } }
