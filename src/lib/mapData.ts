@@ -69,6 +69,8 @@ export interface MapPin {
   strategic: string;
   monument: string;
   narration: string;
+  anecdote?: string;
+  storyConnection?: string;
   reunificationStep?: number;
   defeatedStrategy?: string;
 }
@@ -108,7 +110,9 @@ export const MAP_PINS: MapPin[] = [
     summary: "Đỉnh cao của cao trào cách mạng 1930 - 1931 dưới sự lãnh đạo của Đảng Cộng sản Việt Nam. Hàng vạn nông dân Hưng Nguyên biểu tình thị uy, đập tan chính quyền thực dân phong kiến ở nhiều thôn xã, thành lập chính quyền Xô Viết công nông đầu tiên.",
     strategic: "Cuộc tập dượt đầu tiên của Đảng và quần chúng nhân dân chuẩn bị trực tiếp cho Tổng khởi nghĩa Tháng Tám 1945.",
     monument: "Di tích Lịch sử Quốc gia Đặc biệt Xô Viết Nghệ Tĩnh (TP. Vinh & huyện Hưng Nguyên, Nghệ An).",
-    narration: "Bến Thủy, Hưng Nguyên, Nghệ An, năm 1930. Đỉnh cao của cao trào cách mạng 1930 - 1931, khai sinh chính quyền Xô Viết công nông đầu tiên."
+    narration: "Bến Thủy, Hưng Nguyên, Nghệ An, năm 1930. Đỉnh cao của cao trào cách mạng 1930 - 1931, khai sinh chính quyền Xô Viết công nông đầu tiên.",
+    anecdote: "Ngày 12/9/1930, hơn 8.000 nông dân Hưng Nguyên giương cao cờ đỏ búa liềm biểu tình tiến về thành phố Vinh. Thực dân Pháp ném bom tàn sát làm chết 217 người, nhưng không dập tắt được khí thế bừng bừng; các Làng Đỏ Xô Viết công nông đầu tiên được thành lập.",
+    storyConnection: "Mọi chuyện bắt đầu từ ngọn lửa Xô Viết Nghệ Tĩnh năm 1930. Ngay khi Đảng vừa ra đời, quần chúng nhân dân đã vùng lên lập chính quyền công nông sơ khai đầu tiên – cuộc tập dượt vĩ đại khẳng định vai trò lãnh đạo của Đảng."
   },
   {
     id: "pacbo",
@@ -126,7 +130,9 @@ export const MAP_PINS: MapPin[] = [
     summary: "Sau 30 năm bôn ba tìm đường cứu nước, ngày 28/1/1941 lãnh tụ Nguyễn Ái Quốc trở về Tổ quốc trực tiếp chỉ đạo cách mạng. Tháng 5/1941, Người triệu tập và chủ trì Hội nghị Trung ương 8 tại lán Khuổi Nặm, hoàn chỉnh đường lối chuyển hướng chỉ đạo chiến lược: đặt nhiệm vụ giải phóng dân tộc lên hàng trước tiên và thành lập Mặt trận Việt Minh.",
     strategic: "Xây dựng căn cứ địa địa đầu Tổ quốc, chuyển hướng chỉ đạo chiến lược quyết định sự thành bại của Cách mạng Tháng Tám.",
     monument: "Khu Di tích Quốc gia Đặc biệt Pác Bó (xã Trường Hà, huyện Hà Quảng, tỉnh Cao Bằng).",
-    narration: "Pác Bó, Cao Bằng, năm 1941. Nguyễn Ái Quốc về nước sau ba mươi năm, chủ trì Hội nghị Trung ương 8 và sáng lập Mặt trận Việt Minh."
+    narration: "Pác Bó, Cao Bằng, năm 1941. Nguyễn Ái Quốc về nước sau ba mươi năm, chủ trì Hội nghị Trung ương 8 và sáng lập Mặt trận Việt Minh.",
+    anecdote: "Ngày 28/1/1941, Người bước qua cột mốc 108 cúi mình chạm tay vào nắm đất quê hương. Trong hang Cốc Bó 'cháo bẹ rau măng', bên bàn đá chông chênh Người dịch Lịch sử Đảng và hoàn chỉnh chuyển hướng chỉ đạo cứu nước.",
+    storyConnection: "Nhưng để ngọn lửa cách mạng tìm đúng đường đi chiến lược, năm 1941, lãnh tụ Nguyễn Ái Quốc sau 30 năm bôn ba trở về Pác Bó, đặt ngọn cờ giải phóng dân tộc lên hàng trước tiên và thành lập Mặt trận Việt Minh."
   },
   {
     id: "tantrao",
@@ -144,7 +150,9 @@ export const MAP_PINS: MapPin[] = [
     summary: "Tháng 8/1945, Hội nghị cán bộ toàn quốc của Đảng họp tại Tân Trào quyết định phát động Tổng khởi nghĩa giành chính quyền. Ngày 16/8/1945, Quốc dân Đại hội họp tại Đình Tân Trào thông qua 10 chính sách lớn của Việt Minh, bầu Ủy ban Dân tộc Giải phóng (Chính phủ lâm thời) do Hồ Chí Minh làm Chủ tịch.",
     strategic: "Trung tâm đầu não chỉ đạo Tổng khởi nghĩa Tháng Tám 1945 thắng lợi rực rỡ trên phạm vi cả nước.",
     monument: "Khu Di tích Quốc gia Đặc biệt Tân Trào (huyện Sơn Dương, tỉnh Tuyên Quang).",
-    narration: "Tân Trào, Tuyên Quang, tháng Tám năm 1945. Nơi họp Quốc dân Đại hội, phát lệnh Tổng khởi nghĩa giành chính quyền về tay nhân dân."
+    narration: "Tân Trào, Tuyên Quang, tháng Tám năm 1945. Nơi họp Quốc dân Đại hội, phát lệnh Tổng khởi nghĩa giành chính quyền về tay nhân dân.",
+    anecdote: "Trong cơn sốt rét nặng tại lán Nà Nưa, Bác Hồ căn dặn đồng chí Võ Nguyên Giáp: 'Dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập'. Quốc dân Đại hội sau đó đã phát lệnh Tổng khởi nghĩa toàn quốc.",
+    storyConnection: "Từ ngọn nguồn Pác Bó, căn cứ địa lan tỏa về Tân Trào - 'Thủ đô Khu Giải phóng', truyền đi lời hịch non sông lệnh Tổng khởi nghĩa giành chính quyền trên phạm vi cả nước."
   },
   {
     id: "badinh",
@@ -162,7 +170,9 @@ export const MAP_PINS: MapPin[] = [
     summary: "Ngày 2/9/1945, trước hơn 50 vạn đồng bào tập hợp tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh thay mặt Chính phủ Lâm thời long trọng đọc bản Tuyên ngôn Độc lập, tuyên bố với quốc dân và toàn thế giới sự ra đời của nước Việt Nam Dân chủ Cộng hòa.",
     strategic: "Xóa bỏ ách thống trị hơn 80 năm của thực dân Pháp và hàng nghìn năm phong kiến, mở ra kỷ nguyên độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
     monument: "Quảng trường Ba Đình & Lăng Chủ tịch Hồ Chí Minh (Thủ đô Hà Nội).",
-    narration: "Quảng trường Ba Đình, Hà Nội, ngày 2 tháng 9 năm 1945. Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa."
+    narration: "Quảng trường Ba Đình, Hà Nội, ngày 2 tháng 9 năm 1945. Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.",
+    anecdote: "Giữa biển người hơn 50 vạn đồng bào, khi đang đọc Tuyên ngôn Độc lập, Bác bỗng dừng lại cất lời hỏi ấm áp: 'Tôi nói đồng bào nghe rõ không?' - tiếng hô vang 'Rõ!' làm xúc động triệu con tim nhân dân cả nước.",
+    storyConnection: "Ý chí ấy bùng nổ rực rỡ tại Quảng trường Ba Đình ngày 2/9/1945. Bản Tuyên ngôn Độc lập cùng câu hỏi ấm áp 'Tôi nói đồng bào nghe rõ không?' đã chính thức khai sinh nước Việt Nam Dân chủ Cộng hòa."
   },
   {
     id: "biengioi",
@@ -180,7 +190,9 @@ export const MAP_PINS: MapPin[] = [
     summary: "Chiến dịch tiến công quy mô lớn đầu tiên của Quân đội nhân dân Việt Nam dọc tuyến đường số 4. Sau khi tiêu diệt cứ điểm Đông Khê, quân ta đập tan hệ thống phòng thủ Bo-gác của quân Pháp, giải phóng toàn bộ 750 km biên giới phía Bắc với 35 vạn dân.",
     strategic: "Phá tan thế bao vây cô lập căn cứ địa Việt Bắc, khai thông đường tiếp viện với các nước XHCN, giành thế chủ động chiến lược trên chiến trường chính Bắc Bộ.",
     monument: "Khu Di tích Chiến thắng Chiến dịch Biên giới 1950 (huyện Thạch An, tỉnh Cao Bằng).",
-    narration: "Đông Khê, Cao Bằng, mùa thu năm 1950. Chiến dịch Biên Giới thắng lợi giòn giã, quân ta chính thức giành quyền chủ động chiến lược trên chiến trường chính."
+    narration: "Đông Khê, Cao Bằng, mùa thu năm 1950. Chiến dịch Biên Giới thắng lợi giòn giã, quân ta chính thức giành quyền chủ động chiến lược trên chiến trường chính.",
+    anecdote: "Bức ảnh lịch sử Bác Hồ chống gậy trên đỉnh núi Báo Đông quan sát mặt trận Đông Khê. Tại chiến dịch này, Anh hùng La Văn Cầu đã nhờ đồng đội chặt đứt cánh tay bị thương để tiếp tục ôm bộc phá phá hủy lô cốt địch.",
+    storyConnection: "Khi thực dân Pháp quay lại dã tâm xâm lược, năm 1950, ta mở Chiến dịch Biên Giới. Hình ảnh Bác Hồ trên núi Báo Đông và ý chí quật cường của Anh hùng La Văn Cầu đã đập tan thế bao vây cô lập, giành thế chủ động chiến lược."
   },
   {
     id: "dienbien",
@@ -198,7 +210,9 @@ export const MAP_PINS: MapPin[] = [
     summary: "Trải qua 56 ngày đêm chiến đấu ngoan cường, quân và dân ta dưới sự chỉ đạo của Đại tướng Võ Nguyên Giáp đã chuyển đổi phương châm từ 'đánh nhanh, thắng nhanh' sang 'đánh chắc, tiến chắc', đập tan tập đoàn cứ điểm mạnh nhất Đông Dương của thực dân Pháp.",
     strategic: "Đập tan hoàn toàn Kế hoạch Nava, giáng đòn quyết định buộc thực dân Pháp phải ký Hiệp định Giơnevơ (1954), chấm dứt chiến tranh xâm lược.",
     monument: "Quần thể Di tích Quốc gia Đặc biệt Chiến trường Điện Biên Phủ (tỉnh Điện Biên).",
-    narration: "Điện Biên Phủ, ngày 7 tháng 5 năm 1954. Chiến thắng lừng lẫy năm châu, chấn động địa cầu, đập tan tập đoàn cứ điểm bất khả xâm phạm của thực dân Pháp."
+    narration: "Điện Biên Phủ, ngày 7 tháng 5 năm 1954. Chiến thắng lừng lẫy năm châu, chấn động địa cầu, đập tan tập đoàn cứ điểm bất khả xâm phạm của thực dân Pháp.",
+    anecdote: "Đại tướng Võ Nguyên Giáp đã có quyết định khó khăn nhất cuộc đời chỉ huy: chuyển phương châm tác chiến sang 'đánh chắc, tiến chắc', lệnh kéo pháo ra chuẩn bị lại. Khúc tráng ca Tô Vĩnh Diện chèn pháo, Phan Đình Giót lấp lỗ châu mai sống mãi cùng non sông.",
+    storyConnection: "Thế chủ động ấy phát triển đến đỉnh cao tại Điện Biên Phủ 1954. Quyết định lịch sử 'đánh chắc, tiến chắc' của Đại tướng Võ Nguyên Giáp đã làm nên chiến thắng chấn động địa cầu, buộc Pháp ký Hiệp định Giơnevơ kết thúc 9 năm kháng chiến."
   },
   {
     id: "hienluong",
@@ -217,6 +231,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Khởi đầu tiến trình 21 năm kháng chiến chống Mỹ: Miền Bắc xây dựng CNXH làm hậu phương lớn, miền Nam kiên cường giữ vững ngọn cờ giải phóng.",
     monument: "Di tích Quốc gia Đặc biệt Đôi bờ Hiền Lương - Bến Hải (Vĩnh Linh & Gio Linh, Quảng Trị).",
     narration: "Cầu Hiền Lương, sông Bến Hải, vĩ tuyến 17. Nơi ghi dấu nỗi đau chia cắt hơn hai mươi năm và biểu tượng bất diệt cho ý chí thống nhất non sông.",
+    anecdote: "Cây cầu sắt chỉ dài vỏn vẹn 178 mét nhưng dân tộc ta phải đi suốt 21 năm máu lửa mới nối liền. 'Cuộc chiến cột cờ' và 'cuộc chiến màu sơn cầu' tại đây là biểu tượng sáng ngời cho khát vọng thống nhất non sông của quân dân đôi bờ.",
+    storyConnection: "Nhưng ngay khi Pháp rút đi, đế quốc Mỹ lập tức nhảy vào dựng nên chính quyền bù nhìn. Dòng sông Bến Hải và cây cầu Hiền Lương 178m trở thành vết cứa chia cắt hai miền suốt 21 năm, mở ra giai đoạn miền Bắc vừa xây dựng vừa chi viện miền Nam.",
     reunificationStep: 1,
     defeatedStrategy: "Âm mưu chia cắt lâu dài đất nước của đế quốc Mỹ"
   },
@@ -237,6 +253,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Huyết mạch giao thông quyết định thắng lợi, nối hậu phương lớn miền Bắc xã hội chủ nghĩa với tiền tuyến lớn miền Nam đánh Mỹ.",
     monument: "Hệ thống Di tích Lịch sử Quốc gia Đặc biệt Đường Trường Sơn - Đường Hồ Chí Minh.",
     narration: "Đường Trường Sơn, đường Hồ Chí Minh, mở ngày 19 tháng 5 năm 1959. Con đường huyền thoại xẻ dọc Trường Sơn đi cứu nước của quân và dân ta.",
+    anecdote: "Khúc tráng ca 'xẻ dọc Trường Sơn đi cứu nước mà lòng phơi phới dậy tương lai'. Những đoàn xe không kính hiên ngang vượt mưa bom bão đạn và sự hy sinh kiên cường của 10 cô gái thanh niên xung phong Đồng Lộc đã tạc nên tượng đài bất tử.",
+    storyConnection: "Để nối liền nhịp đập Bắc - Nam, năm 1959, tuyến vận tải Trường Sơn huyền thoại ra đời. Những đoàn xe không kính và sự hy sinh của 10 cô gái Đồng Lộc đã biến con đường máu lửa thành huyết mạch chi viện sức người, sức của cho tiền tuyến lớn.",
     reunificationStep: 1,
     defeatedStrategy: "Bẻ gãy âm mưu phong tỏa cô lập cách mạng miền Nam"
   },
@@ -257,6 +275,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Bước ngoặt chiến lược căn bản: Đánh bại 'Chiến tranh đơn phương', chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công.",
     monument: "Di tích Quốc gia Đặc biệt Đồng Khởi Bến Tre (xã Định Thủy, huyện Mỏ Cày Nam, tỉnh Bến Tre).",
     narration: "Định Thủy, Mỏ Cày, Bến Tre, ngày 17 tháng 1 năm 1960. Ngọn lửa Đồng Khởi bùng cháy, chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công.",
+    anecdote: "Nữ tướng Nguyễn Thị Định chỉ huy 'Đội quân tóc dài' mưu trí cùng nhân dân đồng loạt nổi dậy bằng gậy gộc, súng gỗ đẽo bằng thân dừa và tiếng gõ mõ tre rền vang, làm tan rã hàng loạt đồn bốt kìm kẹp ác ôn của Mỹ - Diệm.",
+    storyConnection: "Có hậu phương tiếp sức, năm 1960, nhân dân miền Nam đồng loạt vùng lên trong phong trào Đồng Khởi Bến Tre. Nữ tướng Nguyễn Thị Định cùng 'Đội quân tóc dài' đã đánh bại 'Chiến tranh đơn phương', chuyển cách mạng miền Nam sang thế tiến công.",
     reunificationStep: 1,
     defeatedStrategy: "Đánh bại chiến lược 'Chiến tranh đơn phương' (1954 - 1960)"
   },
@@ -277,6 +297,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Khẳng định quân và dân miền Nam hoàn toàn có khả năng đánh bại chiến thuật 'trực thăng vận' và 'thiết xa vận', mở đầu cho cao trào đánh bại hoàn toàn 'Chiến tranh đặc biệt' của Mỹ.",
     monument: "Khu Di tích Lịch sử Chiến thắng Ấp Bắc (xã Tân Phú, thị xã Cai Lậy, tỉnh Tiền Giang).",
     narration: "Ấp Bắc, Tiền Giang, ngày 2 tháng 1 năm 1963. Chiến thắng Ấp Bắc bẻ gãy chiến thuật trực thăng vận, dấy lên phong trào thi đua Ấp Bắc giết giặc lập công.",
+    anecdote: "Hơn 300 chiến sĩ giải phóng quả cảm đã bình tĩnh chờ trực thăng sà xuống mới nổ súng, bắn rơi 5 máy bay và bắn hỏng 3 xe bọc thép M113, dấy lên cao trào 'Thi đua Ấp Bắc, giết giặc lập công' khắp toàn miền Nam.",
+    storyConnection: "Khi Mỹ chuyển sang 'Chiến tranh đặc biệt' với vũ khí tối tân, tại Ấp Bắc năm 1963, quân dân ta đã quật ngã chiến thuật 'trực thăng vận' và 'thiết xa vận', chứng minh dũng khí Việt Nam hoàn toàn có thể đánh bại cỗ máy chiến tranh Mỹ.",
     reunificationStep: 2,
     defeatedStrategy: "Đánh bại chiến lược 'Chiến tranh đặc biệt' (1961 - 1965)"
   },
@@ -297,6 +319,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Giáng đòn sấm sét làm lung lay ý chí xâm lược của chính giới Mỹ, buộc Tổng thống Johnson phải tuyên bố ngừng ném bom miền Bắc, phi Mỹ hóa chiến tranh và chấp nhận ngồi vào bàn đàm phán Paris.",
     monument: "Di tích Lịch sử Các điểm Di tích Biệt động Sài Gòn tấn công Tết Mậu Thân 1968 (TP. Hồ Chí Minh).",
     narration: "Sài Gòn, Tết Mậu Thân 1968. Cuộc Tổng tiến công và nổi dậy đồng loạt giáng đòn quyết định làm phá sản chiến lược Chiến tranh cục bộ của đế quốc Mỹ.",
+    anecdote: "Đêm giao thừa Tết Mậu Thân, các chiến sĩ Biệt động Sài Gòn quả cảm đánh chiếm những mục tiêu đầu não hiểm yếu nhất: Tòa Đại sứ Mỹ, Dinh Độc Lập. Cú sốc Tết Mậu Thân truyền trực tiếp trên truyền hình Mỹ đã làm chấn động toàn bộ dư luận quốc tế.",
+    storyConnection: "Đến năm 1968, sức mạnh dồn nén bùng nổ ngay giữa sào huyệt địch trong cuộc Tổng tiến công Tết Mậu Thân. Tiếng súng Biệt động Sài Gòn đã làm lung lay tận gốc ý chí xâm lược của chính giới Mỹ, phá sản 'Chiến tranh cục bộ' và buộc Mỹ phải ngồi vào bàn đàm phán Paris.",
     reunificationStep: 3,
     defeatedStrategy: "Đánh bại chiến lược 'Chiến tranh cục bộ' (1965 - 1968)"
   },
@@ -317,6 +341,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Giáng đòn chí mạng buộc Mỹ phải ký Hiệp định Paris (27/1/1973), rút toàn bộ quân viễn chinh Mỹ về nước, hoàn thành mục tiêu 'Đánh cho Mỹ cút'.",
     monument: "Khu Di tích B-52 hồ Hữu Tiệp và Bảo tàng Chiến thắng B-52 (Thủ đô Hà Nội).",
     narration: "Hà Nội, 12 ngày đêm tháng 12 năm 1972. Chiến thắng Điện Biên Phủ trên không đánh bại hoàn toàn cuộc tập kích chiến lược B-52, buộc Mỹ phải ký Hiệp định Paris rút quân.",
+    anecdote: "Trong 12 ngày đêm khói lửa cuối năm 1972, quân dân Thủ đô bắn rơi 81 máy bay (34 chiếc B-52). Bức ảnh xác B-52 gãy đôi rơi xuống hồ Hữu Tiệp giữa làng hoa Ngọc Hà đã trở thành biểu tượng kiêu hãnh của sức mạnh Việt Nam.",
+    storyConnection: "Khi Mỹ điên cuồng dùng B-52 rải thảm hòng đưa Hà Nội về thời kỳ đồ đá, quân dân Thủ đô lập nên kỳ tích 12 ngày đêm 'Điện Biên Phủ trên không', giáng đòn quyết định đập tan dã tâm thương lượng trên thế mạnh của Mỹ.",
     reunificationStep: 4,
     defeatedStrategy: "Đánh bại âm mưu thương lượng trên thế mạnh trong 'Việt Nam hóa chiến tranh'"
   },
@@ -337,6 +363,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Hiện thực hóa lời dặn thiêng liêng của Chủ tịch Hồ Chí Minh: 'Đánh cho Mỹ cút'. Tạo bước ngoặt căn bản làm thay đổi tương quan lực lượng hoàn toàn có lợi cho cách mạng Việt Nam để tiến lên 'Đánh cho ngụy nhào'.",
     monument: "Nhà lưu niệm đàm phán Hiệp định Paris (Bảo tàng Lịch sử Quốc gia, Hà Nội).",
     narration: "Paris, ngày 27 tháng 1 năm 1973. Hiệp định Paris được ký kết, buộc quân đội viễn chinh Mỹ phải rút khỏi Việt Nam, tạo thời cơ lịch sử để giải phóng miền Nam.",
+    anecdote: "Bản lĩnh kiên định của Cố vấn Lê Đức Thọ và phong thái ung dung, áo dài thanh lịch của Bộ trưởng Nguyễn Thị Bình tại Hội nghị Paris khiến truyền thông quốc tế khâm phục, khắc họa sâu sắc nghệ thuật ngoại giao tâm công của Đảng.",
+    storyConnection: "Đòn sấm sét trên bầu trời Hà Nội dẫn thẳng tới Hiệp định Paris 1973. Bản lĩnh ngoại giao kiên cường đã buộc quân đội viễn chinh Mỹ phải rút sạch về nước, hiện thực hóa lời dạy của Bác: 'Đánh cho Mỹ cút'.",
     reunificationStep: 4,
     defeatedStrategy: "Đánh bại chiến lược 'Việt Nam hóa chiến tranh' (1969 - 1973)"
   },
@@ -357,6 +385,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Đòn đột phá mở màn cuộc Tổng tiến công và nổi dậy mùa Xuân 1975, làm rung chuyển toàn bộ thế trận phòng thủ của địch, tạo bước ngoặt chiến lược tiến tới giải phóng Sài Gòn.",
     monument: "Tượng đài Chiến thắng Buôn Ma Thuột và Di tích Lịch sử Ngã sáu Buôn Ma Thuột (Đắk Lắk).",
     narration: "Buôn Ma Thuột, ngày 10 tháng 3 năm 1975. Đòn điểm huyệt chiến lược mở màn cuộc Tổng tiến công và nổi dậy mùa Xuân năm 1975 đại thắng.",
+    anecdote: "Nghệ thuật nghi binh lừa địch tài tình ở bắc Tây Nguyên khiến tướng ngụy Phạm Văn Phú điều toàn bộ chủ lực lên Pleiku - Kon Tum. Quân ta bất ngờ giáng đòn sấm sét đánh chiếm Buôn Ma Thuột khiến địch tan rã tháo chạy hỗn loạn.",
+    storyConnection: "Khi thời cơ lịch sử đã chín muồi, mùa Xuân 1975, quân ta tung đòn nghi binh điểm huyệt bất ngờ vào Buôn Ma Thuột. Tuyến phòng thủ Tây Nguyên vỡ toang dây chuyền, tạo bước ngoặt thần tốc mở đường giải phóng Sài Gòn.",
     reunificationStep: 5,
     defeatedStrategy: "Đòn mở màn làm sụp đổ hoàn toàn thế trận phòng thủ của địch"
   },
@@ -377,6 +407,8 @@ export const MAP_PINS: MapPin[] = [
     strategic: "Đỉnh cao chói lọi của cuộc kháng chiến chống Mỹ cứu nước, kết thúc vẻ vang 30 năm chiến tranh giải phóng dân tộc (1945 - 1975), giang sơn thu về một mối, đất nước hoàn toàn độc lập, thống nhất.",
     monument: "Di tích Lịch sử Quốc gia Đặc biệt Dinh Độc Lập (Hội trường Thống Nhất, Quận 1, TP. Hồ Chí Minh).",
     narration: "Dinh Độc Lập, ngày 30 tháng 4 năm 1975. Chiến dịch Hồ Chí Minh toàn thắng, cờ giải phóng tung bay trên nóc Dinh Độc Lập, đất nước trọn niềm vui thống nhất.",
+    anecdote: "Trưa ngày 30/4/1975, xe tăng 390 và 384 húc đổ cổng sắt Dinh Độc Lập. Trung úy Bùi Quang Thận cắm lá cờ Mặt trận Dân tộc Giải phóng lên nóc Dinh lúc đúng 11 giờ 30 phút, non sông thu về một mối trong niềm vui vỡ òa của dân tộc.",
+    storyConnection: "Và đúng 11h30 ngày 30/4/1975, xe tăng 390 húc tung cổng Dinh Độc Lập, lá cờ giải phóng kiêu hãnh tung bay trên nóc Dinh. Mốc son thứ 15 khép lại 30 năm chiến tranh giải phóng, hoàn thành trọn vẹn lời dặn 'Đánh cho ngụy nhào', non sông thu về một mối!",
     reunificationStep: 5,
     defeatedStrategy: "Đánh cho ngụy nhào - Giải phóng hoàn toàn miền Nam, thống nhất non sông"
   }

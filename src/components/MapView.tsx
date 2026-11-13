@@ -17,7 +17,9 @@ import {
   Route,
   ChevronRight,
   Compass,
-  CheckCircle2
+  CheckCircle2,
+  BookOpen,
+  Quote
 } from "lucide-react";
 import {
   ARCHIPELAGOS,
@@ -811,6 +813,30 @@ export default function MapView() {
               {pin.strategic}
             </p>
           </div>
+
+          {/* Giai thoại lịch sử đặc sắc */}
+          {pin.anecdote && (
+            <div className="p-3.5 rounded-xl border border-rose-500/30 bg-rose-500/5 space-y-1">
+              <div className="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 flex items-center gap-1.5">
+                <BookOpen className="size-3.5" /> Giai thoại lịch sử xúc động
+              </div>
+              <p className="text-[13.5px] leading-relaxed text-foreground/95 italic">
+                "{pin.anecdote}"
+              </p>
+            </div>
+          )}
+
+          {/* Dòng chảy kể chuyện liên hoàn */}
+          {pin.storyConnection && (
+            <div className="p-3.5 rounded-xl border border-primary/25 bg-primary/5 space-y-1">
+              <div className="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-1.5">
+                <Quote className="size-3.5" /> Dòng chảy kể chuyện (Storytelling)
+              </div>
+              <p className="text-[13.5px] leading-relaxed text-foreground font-medium">
+                {pin.storyConnection}
+              </p>
+            </div>
+          )}
 
           {/* Nút nghe thuyết minh Audio */}
           {canSpeak && (
